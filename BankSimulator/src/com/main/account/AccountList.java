@@ -17,4 +17,8 @@ public class AccountList extends ArrayList<Account>{
 		this.remove(ac);
 	}
 	
+	//public int getAccountIndex(Account ac)
+	
+	//void editAccount ???
+	
 }

@@ -4,6 +4,7 @@ import com.uni.Logging.Log;
 
 public class Account {
 
+	//some sort of identifier
 	double balance;
 		
 	public Account(double balance){
