@@ -5,7 +5,7 @@ import com.uni.Logging.Log;
 public class Account {
 
 	//some sort of identifier
-	double balance;
+	private double balance;
 		
 	public Account(double balance){
 		Log.writeMessage("Creating account");
