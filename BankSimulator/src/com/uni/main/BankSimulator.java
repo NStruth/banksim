@@ -3,7 +3,7 @@ package com.uni.main;
 import com.main.account.Account;
 import com.main.account.AccountList;
 import com.uni.customer.Customer;
-import com.uni.queue.Queue;
+import com.uni.queue.CustomerQueue;
 import com.uni.Logging.Log;
 
 public class BankSimulator {

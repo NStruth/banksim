@@ -1,0 +1,5 @@
+Creating account
+Deposit: 100.0 New Balance: 200.0
+Insufficient Funds
+Balance: 200.0
+Withdraw: 100.0 New Balance: 100.0
