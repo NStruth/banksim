@@ -12,4 +12,8 @@ public class QueueItem {
 		this.c = c;
 		this.d = d;
 	}
+	
+	public Transaction getTransaction(){
+		return d;
+	}
 }

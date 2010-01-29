@@ -1,44 +1,38 @@
 package com.uni.queue;
 
-import java.util.Queue;
+import java.util.ArrayList;
 
-public abstract class CustomerQueue<QueueItem> implements Queue<QueueItem>{
+public class CustomerQueue<QueueItem> extends ArrayList<QueueItem>{
 
-	@Override
-	public boolean add(QueueItem e) {
-		// TODO Auto-generated method stub
-		return false;
+	public CustomerQueue(){
+		super();
 	}
 
 	@Override
-	public QueueItem element() {
+	public boolean add(QueueItem arg0) {
 		// TODO Auto-generated method stub
-		return null;
+		return super.add(arg0);
+	}
+	
+	@Override
+	public String toString(){
+		String retV = "";
+		for(QueueItem qi:this){
+			retV += qi.toString();
+		}
+		return retV;
+	}
+	
+	public QueueItem getFirst() throws Exception{
+		
+		if(!this.isEmpty()){
+			QueueItem q = this.remove(0);
+			return q;
+		}
+		
+		throw new Exception();
 	}
 
-	@Override
-	public boolean offer(QueueItem e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public QueueItem peek() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QueueItem poll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QueueItem remove() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

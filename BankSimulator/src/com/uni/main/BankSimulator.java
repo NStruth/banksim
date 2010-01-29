@@ -2,9 +2,12 @@ package com.uni.main;
 
 import com.main.account.Account;
 import com.main.account.AccountList;
+import com.main.account.Transaction;
+import com.uni.Logging.Log;
+import com.uni.Teller.Teller;
 import com.uni.customer.Customer;
 import com.uni.queue.CustomerQueue;
-import com.uni.Logging.Log;
+import com.uni.queue.QueueItem;
 
 public class BankSimulator {
 	/**
@@ -19,6 +22,30 @@ public class BankSimulator {
 		q.push(c);*/
 				
 		Log.clearLog();
+		CustomerQueue<QueueItem> cq = new CustomerQueue<QueueItem>();
+		
+		//tester data
+		Customer c = new Customer("Jon", "Mirhadi");
+		Customer d = new Customer("Neil", "Struth");
+		Customer e = new Customer("Katy", "Perry");
+		
+		Transaction t = new Transaction(Transaction.Choices.OPEN, 0);
+		Transaction t2 = new Transaction(Transaction.Choices.WITHDRAW, 10);
+		
+		QueueItem qi = new QueueItem(c, t);
+		cq.add(qi);
+		qi = new QueueItem(d, t2);
+		cq.add(qi);
+		
+		Teller teller = new Teller();
+		
+		int size = cq.size();
+		for(int i=0; i<size;i++){
+			teller.processQueueItem(cq.get(i));
+		}
+		
+			
+	
 		Account tester = new Account(100);
 		
 		AccountList al = new AccountList();
