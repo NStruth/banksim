@@ -19,30 +19,35 @@ public class FileIO {
 		this.cfilename = cfilename;
 	}
 	
-	public AccountList readAccounts()
+	public AccountList readAccountLines()
 	{
-		
 		try
 		{
-			
-			String id;
-			double balance;
-			AccountList list = new AccountList();
 			File file = new File(afilename);
 			Scanner scanner = new Scanner(file);
+			AccountList list = new AccountList();
 			
-			scanner.useDelimiter("::");
+			scanner.useDelimiter("\r\n");
 			while(scanner.hasNext())
 			{
-				id = scanner.next();
-				balance = scanner.nextDouble();
-				Account a = new Account(balance, id);
-				list.add(a);
+				list.add(parseAccountLine(scanner.next()));
 			}
 			return list;
-				
-			}
+		}
 		catch(FileNotFoundException e){return null;}
+	}
+	
+	private Account parseAccountLine(String line)
+	{
+			String id;
+			double balance;
+			Scanner lScanner = new Scanner(line);
+			
+			lScanner.useDelimiter("::");
+			id = lScanner.next();
+			balance = lScanner.nextDouble();
+			Account a = new Account(balance, id);
+			return a;
 	}
 			
 		
