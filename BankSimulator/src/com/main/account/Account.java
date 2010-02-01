@@ -4,12 +4,13 @@ import com.uni.Logging.Log;
 
 public class Account {
 
-	//some sort of identifier
+	private String id;
 	private double balance;
 		
-	public Account(double balance){
-		Log.writeMessage("Creating account");
+	public Account(double balance, String id){
+		Log.writeMessage("Creating account : "+id);
 		this.balance = balance;
+		this.id = id;
 	}
 	
 	public boolean withDraw(double value){
