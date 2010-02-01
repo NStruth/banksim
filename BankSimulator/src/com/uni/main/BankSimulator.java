@@ -6,6 +6,7 @@ import com.main.account.Transaction;
 import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
 import com.uni.customer.Customer;
+import com.uni.file.FileIO;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
@@ -22,7 +23,7 @@ public class BankSimulator {
 		q.push(c);*/
 				
 		Log.clearLog();
-		CustomerQueue<QueueItem> cq = new CustomerQueue<QueueItem>();
+		/*CustomerQueue<QueueItem> cq = new CustomerQueue<QueueItem>();
 		
 		//tester data
 		Customer c = new Customer("Jon", "Mirhadi");
@@ -46,10 +47,12 @@ public class BankSimulator {
 		
 			
 	
-		Account tester = new Account(100);
+		Account tester = new Account(100);*/
 		
-		AccountList al = new AccountList();
-		al.openAccount(tester);
+		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
+		
+		AccountList al = filehandle.readAccountLines();
+		//al.openAccount(tester);
 		al.get(0).deposit(100);
 		al.get(0).withDraw(250);
 		al.get(0).displayBalance();
