@@ -6,6 +6,7 @@ import com.main.account.Transaction;
 import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
 import com.uni.customer.Customer;
+import com.uni.customer.CustomerList;
 import com.uni.file.FileIO;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
@@ -53,13 +54,16 @@ public class BankSimulator {
 		//TODO Neil, i've added a CustomerList class...
 		//fancy reading that input from a file too ?
 		//tester data
-		Customer c = new Customer("Jon", "Mirhadi");
-		Customer d = new Customer("Neil", "Struth");
-		Customer e = new Customer("Katy", "Perry");
+		Customer c = new Customer("Jon", "Mirhadi", "address");
+		Customer d = new Customer("Neil", "Struth", "address");
+		Customer e = new Customer("Katy", "Perry", "address");
 		
 		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
 		
 		AccountList al = filehandle.readAccountLines();
+		CustomerList cl = filehandle.readCustomerLines();
+		Log.writeMessage("DISPLAYING CUSTOMER LIST");
+		cl.print();
 		
 		//this just adds the association between customer and account
 		c.addAccount(al.get(0));

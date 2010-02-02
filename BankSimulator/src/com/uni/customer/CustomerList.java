@@ -2,7 +2,9 @@ package com.uni.customer;
 
 import java.util.ArrayList;
 
-public class CustomerList<Customer> extends ArrayList<Customer> {
+import com.uni.Logging.Log;
+
+public class CustomerList extends ArrayList<Customer> {
 
 	@Override
 	public boolean add(Customer e) {
@@ -10,5 +12,12 @@ public class CustomerList<Customer> extends ArrayList<Customer> {
 		return super.add(e);
 	}
 
-
+	public void print()
+	{
+		for(int i = 0; i < this.size(); i++)
+		{
+			Log.writeMessage(this.get(i).toString()); 
+		}
+	}
+	
 }
