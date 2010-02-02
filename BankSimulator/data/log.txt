@@ -2,7 +2,7 @@ Creating account : A1
 Creating account : A2
 Creating account : A3
 Creating account : A4
-Deposit: 100.0 New Balance: 1100.19
-Withdraw: 250.0 New Balance: 850.19
-Balance: 850.19
-Withdraw: 100.0 New Balance: 750.19
+Teller processing withdraw transaction
+Withdraw: 10.0 New Balance: 990.19
+Processing deposit Transaction
+Deposit: 100.0 New Balance: 600.23

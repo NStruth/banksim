@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 public class CustomerQueue<QueueItem> extends ArrayList<QueueItem>{
 
+	private int lastCustomer = 0;
+	
 	public CustomerQueue(){
 		super();
 	}
 
 	@Override
 	public boolean add(QueueItem arg0) {
-		// TODO Auto-generated method stub
 		return super.add(arg0);
 	}
 	

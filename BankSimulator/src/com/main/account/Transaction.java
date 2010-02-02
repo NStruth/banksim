@@ -1,9 +1,11 @@
 package com.main.account;
 
-import java.util.Enumeration;
+import com.uni.customer.Customer;
 
 public class Transaction {
 
+	public Account ac;
+	
 	public enum Choices {
 		OPEN,
 		CLOSE,
@@ -12,23 +14,44 @@ public class Transaction {
 	}
 	
 	private Choices choice;
-	private int aux; //money value will be stored here (e.g. withdraw £20)
+	private Object primaryAux; //
+	private Object secondaryAux;
 	
-	//Should we not have two constructors one for the monetry quatification
-	//and a second where we dont need one like:
-	public Transaction(Choices c, int aux){
+	/*
+	 * Constructor when withdrawing money
+	 */
+	public Transaction(Choices c, int aux, Account ac){
 		this.choice = c;
-		this.aux = aux;
+		this.primaryAux = aux;
+		this.secondaryAux = ac;
 	}
-	public Transaction(Choices c)
+	
+
+
+	/* Constructor to be used when opening an account */
+	public Transaction(Choices c, Customer o){
+		this.choice = c;
+		this.primaryAux = o;
+	}
+	
+	/* Constructor to be used when opening a joint account */
+	public Transaction(Choices c, Customer first, Customer second)
 	{
 		this.choice = c;
+		this.primaryAux = first;
+		this.primaryAux = second;
 	}
 	
 	public Transaction.Choices getChoice(){
 		return choice;
 	}
 	
-	
+	public Object getPrimaryAux() {
+		return primaryAux;
+	}
+
+	public Object getSecondaryAux() {
+		return secondaryAux;
+	}
 	
 }
