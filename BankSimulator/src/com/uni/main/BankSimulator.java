@@ -30,7 +30,7 @@ public class BankSimulator {
 		Customer d = new Customer("Neil", "Struth");
 		Customer e = new Customer("Katy", "Perry");
 		
-		Transaction t = new Transaction(Transaction.Choices.OPEN, 0);
+		Transaction t = new Transaction(Transaction.Choices.OPEN);
 		Transaction t2 = new Transaction(Transaction.Choices.WITHDRAW, 10);
 		
 		QueueItem qi = new QueueItem(c, t);
