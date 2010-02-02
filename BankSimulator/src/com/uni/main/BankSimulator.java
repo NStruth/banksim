@@ -61,11 +61,19 @@ public class BankSimulator {
 		
 		AccountList al = filehandle.readAccountLines();
 		
+		//this just adds the association between customer and account
 		c.addAccount(al.get(0));
 		d.addAccount(al.get(1));
 		e.addAccount(al.get(0));
 		
+		//create a queue
+		//That class needs to keep track of a customer queue number
+		//look in that class and read my comments there.
 		CustomerQueue<QueueItem> cq = new CustomerQueue<QueueItem>();
+		
+		//a couple of test transactions
+		//Maybe the transaction should have no knowledge of the account though
+		//and instead a "0" or a "1" for customers primary account/secondary account
 		Transaction t = new Transaction(Transaction.Choices.WITHDRAW, 10, al.get(0));
 		Transaction t2 = new Transaction(Transaction.Choices.DEPOSIT, 100, al.get(1));
 		
