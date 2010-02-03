@@ -41,12 +41,12 @@ public class FileIO {
 	
 	private Account parseAccountLine(String line)
 	{
-			String id;
+			int id;
 			double balance;
 			Scanner lScanner = new Scanner(line);
 			
 			lScanner.useDelimiter("::");
-			id = lScanner.next();
+			id = Integer.parseInt(lScanner.next());
 			balance = lScanner.nextDouble();
 			Account a = new Account(balance, id);
 			return a;
@@ -68,45 +68,48 @@ public class FileIO {
 		catch(FileNotFoundException e){return null;}
 	}
 			
-	private Customer parseCustomerLine(String line)
-	{
+	private Customer parseCustomerLine(String line){
 		String fName, lName, address, id1, id2;
 		double balance1, balance2;
 		Scanner lScanner = new Scanner(line);
+		Customer cust;
 		
 		lScanner.useDelimiter("::");
 		fName = lScanner.next();
 		lName = lScanner.next();
 		address = lScanner.next();
-		if(lScanner.hasNext())
-		{
+		cust = new Customer(fName,lName, address);
+		
+		if(lScanner.hasNext()){
+			int ac1 = lScanner.nextInt();
+			cust.addAccount(ac1);
+		}
+		
+		if(lScanner.hasNext()){
+			int ac2 = lScanner.nextInt();
+			cust.addAccount(ac2);
+		}
+		
+		return cust;
+		/*if(lScanner.hasNext()){
 			id1 = lScanner.next();
 			balance1 = lScanner.nextDouble();
-			Account acc1 = new Account(balance1, id1);
+			//Account acc1 = new Account(balance1, id1);
 			
 			if(lScanner.hasNext())
 			{
 				id2 = lScanner.next();
 				balance2 = lScanner.nextDouble();
-				Account acc2 = new Account(balance2, id2);
-				Customer cust = new Customer(fName, lName, address,acc1, acc2);
-				return cust;
+				//Account acc2 = new Account(balance2, id2);
+				cust = new Customer(fName, lName, address);
 			}
-			else
-			{
-				Customer cust = new Customer(fName, lName, address,acc1);
-				return cust;
-			}
-		}
-		else
-		{
-			Customer cust = new Customer(fName, lName, address);
-			return cust;
-		}	
-	
+		}else{
+			cust = new Customer(fName, lName, address);
+
+		}	*/
+		
 	}
 			
 		
-		
-	}
+}
 	
