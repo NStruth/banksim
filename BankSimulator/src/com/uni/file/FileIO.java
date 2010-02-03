@@ -58,7 +58,7 @@ public class FileIO {
 			File file = new File(cfilename);
 			Scanner scanner = new Scanner(file);
 			CustomerList cList = new CustomerList();
-			scanner.useDelimiter("\r\n");
+			scanner.useDelimiter("\n");
 			while(scanner.hasNext())
 			{
 				cList.add(parseCustomerLine(scanner.next()));
@@ -69,8 +69,7 @@ public class FileIO {
 	}
 			
 	private Customer parseCustomerLine(String line){
-		String fName, lName, address, id1, id2;
-		double balance1, balance2;
+		String fName, lName, address;
 		Scanner lScanner = new Scanner(line);
 		Customer cust;
 		
@@ -90,24 +89,7 @@ public class FileIO {
 			cust.addAccount(ac2);
 		}
 		
-		return cust;
-		/*if(lScanner.hasNext()){
-			id1 = lScanner.next();
-			balance1 = lScanner.nextDouble();
-			//Account acc1 = new Account(balance1, id1);
-			
-			if(lScanner.hasNext())
-			{
-				id2 = lScanner.next();
-				balance2 = lScanner.nextDouble();
-				//Account acc2 = new Account(balance2, id2);
-				cust = new Customer(fName, lName, address);
-			}
-		}else{
-			cust = new Customer(fName, lName, address);
-
-		}	*/
-		
+		return cust;	
 	}
 			
 		

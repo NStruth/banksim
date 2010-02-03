@@ -1,5 +1,6 @@
 package com.uni.main;
 
+import java.util.Random;
 import com.main.account.Account;
 import com.main.account.AccountList;
 import com.main.account.Transaction;
@@ -12,6 +13,7 @@ import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
 public class BankSimulator {
+	
 	/**
 	 * @param args
 	 */
@@ -36,7 +38,7 @@ public class BankSimulator {
 		//create a queue
 		//That class needs to keep track of a customer queue number
 		//look in that class and read my comments there.
-		CustomerQueue<QueueItem> cq = new CustomerQueue<QueueItem>();
+		CustomerQueue cq = new CustomerQueue();
 		
 		//a couple of test transactions
 		//Maybe the transaction should have no knowledge of the account though
