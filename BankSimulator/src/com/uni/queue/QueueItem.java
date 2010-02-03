@@ -16,4 +16,8 @@ public class QueueItem {
 	public Transaction getTransaction(){
 		return d;
 	}
+	
+	public Customer getCustomer(){
+		 return this.c;
+	}
 }
