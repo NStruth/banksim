@@ -2,7 +2,7 @@ package com.uni.queue;
 
 import java.util.ArrayList;
 
-public class CustomerQueue<QueueItem> extends ArrayList<QueueItem>{
+public class CustomerQueue extends ArrayList<QueueItem>{
 
 	//We need a queue number. Thing with array list is if you remove
 	//1 then all the accounts get shifted left e.g. 1 becomes 0.
