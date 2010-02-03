@@ -1,4 +1,4 @@
-Neil::Struth::1 Test Street::A1
-Jon::Mirhadi::123 Fake Lane
-Frank::Sauzee::160 Easter Road::A2
-Barack::Obama::1600 Pennsylvania Ave::A2::A3
+Neil::Struth::1 Test Street::60001::60002
+Jon::Mirhadi::123 Fake Lane::60003
+Frank::Sauzee::160 Easter Road::60003
+Barack::Obama::1600 Pennsylvania Ave::60004
