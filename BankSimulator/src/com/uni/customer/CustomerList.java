@@ -14,9 +14,8 @@ public class CustomerList extends ArrayList<Customer> {
 
 	public void print()
 	{
-		for(int i = 0; i < this.size(); i++)
-		{
-			Log.writeMessage(this.get(i).toString()); 
+		for(Customer c: this){
+			Log.writeMessage(c.toString()); 
 		}
 	}
 	
