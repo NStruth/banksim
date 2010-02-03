@@ -1,8 +1,29 @@
-Creating account : A1
-Creating account : A2
-Creating account : A3
-Creating account : A4
-Teller processing withdraw transaction
+Creating account : 60001
+Creating account : 60002
+Creating account : 60003
+Creating account : 60004
+
+Printing account list
+60001 1000.19
+60002 500.23
+60003 600.1
+60004 500.3
+
+DISPLAYING CUSTOMER LIST
+Neil Struth 1 Test Street
+Jon Mirhadi 123 Fake Lane
+Frank Sauzee 160 Easter Road
+Barack Obama 1600 Pennsylvania Ave
+*** Processing withdraw transaction ***
+
+Customer: Neil Struth
 Withdraw: 10.0 New Balance: 990.19
-Processing deposit Transaction
+
+***End of Transaction***
+
+*** Processing deposit Transaction***
+
 Deposit: 100.0 New Balance: 600.23
+
+***End of Transaction***
+
