@@ -4,10 +4,10 @@ import com.uni.Logging.Log;
 
 public class Account {
 
-	private String id;
+	private int id;
 	private double balance;
 		
-	public Account(double balance, String id){
+	public Account(double balance, int id){
 		Log.writeMessage("Creating account : "+id);
 		this.balance = balance;
 		this.id = id;
@@ -31,6 +31,14 @@ public class Account {
 	
 	public void displayBalance(){
 		Log.writeMessage("Balance: " + this.balance);
+	}
+	
+	public int getId(){
+		return id;
+	}
+	
+	public String toString(){
+		return id + " " + balance;
 	}
 	
 }

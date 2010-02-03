@@ -4,7 +4,7 @@ import com.uni.customer.Customer;
 
 public class Transaction {
 
-	public Account ac;
+	public int ac;
 	
 	public enum Choices {
 		OPEN,
@@ -20,7 +20,7 @@ public class Transaction {
 	/*
 	 * Constructor when withdrawing money
 	 */
-	public Transaction(Choices c, int aux, Account ac){
+	public Transaction(Choices c, int aux, int ac){
 		this.choice = c;
 		this.primaryAux = aux;
 		this.secondaryAux = ac;
