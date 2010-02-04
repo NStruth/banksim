@@ -18,7 +18,7 @@ public class Teller {
 	public void processQueueItem(QueueItem q){
 		Transaction t = q.getTransaction();
 		Customer cust = q.getCustomer();
-		
+				
 		int acNo;
 		Account ac;
 		Integer value; //can't cast object to int
@@ -29,7 +29,7 @@ public class Teller {
 		switch(t.getChoice()){
 		case WITHDRAW:
 			Log.writeMessage("*** Processing withdraw transaction ***\n");
-			Log.writeMessage("Customer: " + cust.getFullName());
+			Log.writeMessage("Customer: " + cust.getFullName() + " No: " + q.getCustNo());
 			acNo = (Integer)t.getSecondaryAux();
 			ac = this.al.getAccountAtIndex(acNo);
 			value = (Integer)t.getPrimaryAux();
@@ -38,7 +38,7 @@ public class Teller {
 			break;
 		case DEPOSIT:
 			Log.writeMessage("*** Processing deposit Transaction***\n");
-			Log.writeMessage("Customer: " + cust.getFullName());
+			Log.writeMessage("Customer: " + cust.getFullName() + " No: " + q.getCustNo());
 			acNo = (Integer)t.getSecondaryAux();
 			ac = this.al.getAccountAtIndex(acNo);
 			value = (Integer)t.getPrimaryAux();

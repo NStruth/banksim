@@ -16,13 +16,14 @@ Frank Sauzee 160 Easter Road
 Barack Obama 1600 Pennsylvania Ave
 *** Processing withdraw transaction ***
 
-Customer: Neil Struth
+Customer: Neil Struth No: 1001
 Withdraw: 10.0 New Balance: 990.19
 
 ***End of Transaction***
 
 *** Processing deposit Transaction***
 
+Customer: Jon Mirhadi No: 1002
 Deposit: 100.0 New Balance: 600.23
 
 ***End of Transaction***

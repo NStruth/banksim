@@ -1,6 +1,7 @@
 package com.uni.queue;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CustomerQueue extends ArrayList<QueueItem>{
 
@@ -8,7 +9,7 @@ public class CustomerQueue extends ArrayList<QueueItem>{
 	//1 then all the accounts get shifted left e.g. 1 becomes 0.
 	//instead of super.add(QueueItem) we should do super.add(key, QueueItem)
 	//where "key" is the customer number. yoooo
-	private int lastCustomer = 0;
+	private int lastCustomerID = 0;
 	
 	public CustomerQueue(){
 		super();
