@@ -33,6 +33,11 @@ public class Account {
 		Log.writeMessage("Balance: " + this.balance);
 	}
 	
+	public double getBalance()
+	{
+		return this.balance;
+	}
+	
 	public int getId(){
 		return id;
 	}

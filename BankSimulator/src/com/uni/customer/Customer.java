@@ -37,6 +37,16 @@ public class Customer {
 		return this.accList.size();
 	}
 	
+	public int getAccountId(int id)
+	{
+		if(this.getNumOfAccounts() > id)
+		{
+			return this.accList.get(id);
+		}
+		else return -1;
+
+	}
+	
 	public String toString()
 	{
 		return this.fName + " " + this.lName + " " + this.address;

@@ -26,11 +26,12 @@ public class BankSimulator {
 		//TODO Neil, i've added a CustomerList class...
 		//fancy reading that input from a file too ?
 		//tester data
-				
+		
 		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
 		
 		AccountList al = filehandle.readAccountLines();
 		CustomerList cl = filehandle.readCustomerLines();
+		Generator g = new Generator(cl, al);
 		Log.writeMessage(al.toString());
 		Log.writeMessage("DISPLAYING CUSTOMER LIST");
 		cl.print();
@@ -38,18 +39,20 @@ public class BankSimulator {
 		//create a queue
 		//That class needs to keep track of a customer queue number
 		//look in that class and read my comments there.
-		CustomerQueue cq = new CustomerQueue();
+		//CustomerQueue cq = new CustomerQueue();
+		
+		CustomerQueue cq = g.generate();
 		
 		//a couple of test transactions
 		//Maybe the transaction should have no knowledge of the account though
-		//and instead a "0" or a "1" for customers primary account/secondary account
-		Transaction t = new Transaction(Transaction.Choices.WITHDRAW, 10, 60001);
-		Transaction t2 = new Transaction(Transaction.Choices.DEPOSIT, 100, 60002);
+		//and instead a "0" or a "1" for customers primary account/secondary account - me likey! Neil
+		//Transaction t = new Transaction(Transaction.Choices.WITHDRAW, 10, 60001);
+		//Transaction t2 = new Transaction(Transaction.Choices.DEPOSIT, 100, 60002);
 		
-		QueueItem qi = new QueueItem(cl.get(0), t);
-		cq.add(qi);
-		qi = new QueueItem(cl.get(1), t2);
-		cq.add(qi);
+		//QueueItem qi = new QueueItem(cl.get(0), t);
+		//cq.add(qi);
+		//qi = new QueueItem(cl.get(1), t2);
+		//cq.add(qi);
 		
 		Teller teller = new Teller(al);
 
