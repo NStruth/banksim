@@ -47,6 +47,10 @@ public class Teller {
 			break;
 		case OPEN:
 			Log.writeMessage("\n*** Processing open Transaction ***\n");
+			Account acc = new Account();
+			al.add(acc);
+			cust.addAccount(acc);
+			Log.writeMessage("\n*** End of Transaction ***\n");
 			break;
 		case CLOSE:
 			Log.writeMessage("\n*** Processing close Transaction ***\n");

@@ -4,6 +4,7 @@ import com.uni.Logging.Log;
 
 public class Account {
 
+	public static int masterNumber = 60000;
 	private int id;
 	private double balance;
 		
@@ -11,6 +12,13 @@ public class Account {
 		Log.writeMessage("Creating account : "+id);
 		this.balance = balance;
 		this.id = id;
+		masterNumber++;
+	}
+	public Account()
+	{
+		this.balance = 100.00;
+		masterNumber++;
+		this.id = masterNumber;
 	}
 	
 	public boolean withDraw(double value){

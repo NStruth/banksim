@@ -48,6 +48,15 @@ public class Customer {
 
 	}
 	
+	public void addAccount(Account ac)
+	{
+		if(this.getNumOfAccounts() < 2)
+		{
+			this.accList.add(ac.getId());
+			Log.writeMessage("Account Number: "+ ac.getId() + " added to customer : " + this.getFullName());
+		}
+	}
+	
 	public void removeAccount(int id)
 	{
 		if(this.getNumOfAccounts() >= id)
