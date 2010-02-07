@@ -1,5 +1,5 @@
 /*This class will randomly generate a queue
-from a list of customers */
+from a list of customers - Neil Struth */
 package com.uni.main;
 
 import java.util.Random;
@@ -7,6 +7,7 @@ import java.util.Random;
 import com.main.account.Account;
 import com.main.account.AccountList;
 import com.main.account.Transaction;
+import com.uni.Logging.Log;
 import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
 import com.uni.queue.CustomerQueue;
@@ -23,7 +24,7 @@ public class Generator {
 	}
 	
 	
-	public QueueItem generateItem()
+	private QueueItem generateItem()
 	{
 		Random rGen = new Random();
 		int cNo = rGen.nextInt(clist.size());
@@ -37,7 +38,8 @@ public class Generator {
 	//Horrible I know!!! The other way i thought of doing it was to keep the weights in an
 	//Array and sort them first... The only thing with that method is that you dont keep track of 
 	//which one is which. Two-dimensional array would be the obvious solution. Ill think about it later...Neil
-	
+
+	//Works but a customer can be in a queue twice which screws up some of the transactions.
 	private Transaction getTransaction(Customer c)
 	{
 		Random rGen = new Random();
@@ -48,7 +50,7 @@ public class Generator {
 		{
 			case 0:
 			{
-				Transaction t = new Transaction(Transaction.Choices.OPEN, c);
+				Transaction t = new Transaction(Transaction.Choices.OPEN);
 				return t;
 			}
 			case 1:
@@ -59,14 +61,14 @@ public class Generator {
 				wWeight = 45;
 				if(tType > 0 && tType <= cWeight)
 				{
-					Transaction t = new Transaction(Transaction.Choices.CLOSE, c);
+					Transaction t = new Transaction(Transaction.Choices.CLOSE,0);
 					return t;
 				}
 				else
 				{
 					if(tType > cWeight && tType <= oWeight + cWeight)
 					{
-						Transaction t = new Transaction(Transaction.Choices.OPEN, c);
+						Transaction t = new Transaction(Transaction.Choices.OPEN);
 						return t;
 					}
 					else
@@ -95,7 +97,9 @@ public class Generator {
 				wWeight = 45;
 				if(tType > 0 && tType <= cWeight)
 				{
-					Transaction t = new Transaction(Transaction.Choices.CLOSE, c);
+					int accNo = rGen.nextInt(2);
+					Log.writeMessage("ACCNO = " + accNo);
+					Transaction t = new Transaction(Transaction.Choices.CLOSE, accNo);
 					return t;
 				}
 				else
@@ -134,7 +138,7 @@ public class Generator {
 		
 	}
 	
-	public int getWithdrawAmount(Customer c, int acc)
+	private int getWithdrawAmount(Customer c, int acc)
 	{
 		Account a = aList.getAccountAtIndex(acc);
 		a.toString();

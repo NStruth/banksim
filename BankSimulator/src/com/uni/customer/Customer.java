@@ -3,6 +3,7 @@ package com.uni.customer;
 import java.util.ArrayList;
 
 import com.main.account.Account;
+import com.uni.Logging.Log;
 
 public class Customer {
 
@@ -39,12 +40,24 @@ public class Customer {
 	
 	public int getAccountId(int id)
 	{
-		if(this.getNumOfAccounts() > id)
+		if(this.getNumOfAccounts() >= id)
 		{
 			return this.accList.get(id);
 		}
 		else return -1;
 
+	}
+	
+	public void removeAccount(int id)
+	{
+		if(this.getNumOfAccounts() >= id)
+		{
+			Log.writeMessage("AccountNo : " + this.getAccountId(id) + " removed\n");
+			this.accList.remove(id);	
+		}
+		else
+			Log.writeMessage("Invalid ID");
+		
 	}
 	
 	public String toString()

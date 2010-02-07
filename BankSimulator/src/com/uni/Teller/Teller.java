@@ -34,7 +34,7 @@ public class Teller {
 			ac = this.al.getAccountAtIndex(acNo);
 			value = (Integer)t.getPrimaryAux();
 			ac.withDraw(value);
-			Log.writeMessage("\n***End of Transaction***\n");
+			Log.writeMessage("\n*** End of Transaction ***\n");
 			break;
 		case DEPOSIT:
 			Log.writeMessage("*** Processing deposit Transaction***\n");
@@ -43,13 +43,17 @@ public class Teller {
 			ac = this.al.getAccountAtIndex(acNo);
 			value = (Integer)t.getPrimaryAux();
 			ac.deposit(value);
-			Log.writeMessage("\n***End of Transaction***\n");
+			Log.writeMessage("\n*** End of Transaction ***\n");
 			break;
 		case OPEN:
-			Log.writeMessage("Processing open Transaction");
+			Log.writeMessage("\n*** Processing open Transaction ***\n");
 			break;
 		case CLOSE:
-			Log.writeMessage("Processing close Transaction");
+			Log.writeMessage("\n*** Processing close Transaction ***\n");
+			Log.writeMessage("Customer = "+ cust.getFullName());
+			Log.writeMessage("PrimaryAux = " + (Integer)t.getPrimaryAux());
+			cust.removeAccount((Integer)t.getPrimaryAux());
+			Log.writeMessage("\n*** End of Transaction ***\n");
 			break;
 		}		
 	}

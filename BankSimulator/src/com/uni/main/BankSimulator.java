@@ -46,7 +46,7 @@ public class BankSimulator {
 		//a couple of test transactions
 		//Maybe the transaction should have no knowledge of the account though
 		//and instead a "0" or a "1" for customers primary account/secondary account - me likey! Neil
-		//Transaction t = new Transaction(Transaction.Choices.WITHDRAW, 10, 60001);
+		//Transaction t = new Transaction(Transaction.Choices.CLOSE, 0);
 		//Transaction t2 = new Transaction(Transaction.Choices.DEPOSIT, 100, 60002);
 		
 		//QueueItem qi = new QueueItem(cl.get(0), t);

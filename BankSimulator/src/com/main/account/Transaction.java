@@ -26,12 +26,18 @@ public class Transaction {
 		this.secondaryAux = ac;
 	}
 	
-
+	/*
+	 * Constructor for closing an account
+	 */
+	public Transaction(Choices c, int ac)
+	{
+		this.choice = c;
+		this.primaryAux = ac;
+	}
 
 	/* Constructor to be used when opening an account */
-	public Transaction(Choices c, Customer o){
+	public Transaction(Choices c){
 		this.choice = c;
-		this.primaryAux = o;
 	}
 	
 	/* Constructor to be used when opening a joint account */
