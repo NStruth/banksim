@@ -29,10 +29,19 @@ public class Generator {
 		Random rGen = new Random();
 		int cNo = rGen.nextInt(clist.size());
 		Customer c = clist.get(cNo);
-		Transaction t = getTransaction(c);
-		QueueItem q = new QueueItem(c, t);
+		if(c.getStatus() == 0)
+		{
+			c.setStatus(1);
+			Transaction t = getTransaction(c);
+			QueueItem q = new QueueItem(c, t);
+			return q;
+		}
+		else
+		{
+			QueueItem q = generateItem();
+			return q;
+		}
 		
-		return q;
 	}
 	
 	//Horrible I know!!! The other way i thought of doing it was to keep the weights in an

@@ -10,6 +10,11 @@ public class Customer {
 	String fName, lName;
 	String address;
 	ArrayList<Integer> accList;
+	
+	//Status indicates whether customer is in the queue or not
+	//0 = not 1 = in queue
+	//initially a customer is not in the queue
+	private int status = 0;
 		
 	public Customer(String fName, String lName, String address){
 		this.fName = fName;
@@ -28,6 +33,16 @@ public class Customer {
 		}else{
 			return this.accList.add(c);		
 		}
+	}
+	
+	public int getStatus()
+	{
+		return this.status;
+	}
+	
+	public void setStatus(int s)
+	{
+		this.status = s;
 	}
 	
 	public String getFullName(){
