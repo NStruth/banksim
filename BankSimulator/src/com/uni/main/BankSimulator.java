@@ -1,16 +1,12 @@
 package com.uni.main;
 
-import java.util.Random;
-import com.main.account.Account;
 import com.main.account.AccountList;
-import com.main.account.Transaction;
 import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
-import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
 import com.uni.file.FileIO;
+import com.uni.gui.GuiDisplay;
 import com.uni.queue.CustomerQueue;
-import com.uni.queue.QueueItem;
 
 public class BankSimulator {
 	
@@ -20,17 +16,16 @@ public class BankSimulator {
 	public static void main(String[] args) {
 				
 		
+		
 		Log.clearLog();
 		
 		
-		//TODO Neil, i've added a CustomerList class...
-		//fancy reading that input from a file too ?
-		//tester data
-		
+		//read in list of accounts and customers
 		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
-		
 		AccountList al = filehandle.readAccountLines();
 		CustomerList cl = filehandle.readCustomerLines();
+		
+		/* Generate a random queue */
 		Generator g = new Generator(cl, al);
 		Log.writeMessage(al.toString());
 		Log.writeMessage("DISPLAYING CUSTOMER LIST");
@@ -61,6 +56,7 @@ public class BankSimulator {
 			teller.processQueueItem(cq.get(i));
 		}
 		
+		GuiDisplay gd = new GuiDisplay();
 		//al.openAccount(tester);
 		/*al.get(0).deposit(100);
 		al.get(0).withDraw(250);
