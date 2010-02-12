@@ -44,15 +44,10 @@ public class Generator {
 		
 	}
 	
-	//Horrible I know!!! The other way i thought of doing it was to keep the weights in an
-	//Array and sort them first... The only thing with that method is that you dont keep track of 
-	//which one is which. Two-dimensional array would be the obvious solution. Ill think about it later...Neil
-
-	//Works but a customer can be in a queue twice which screws up some of the transactions.
 	private Transaction getTransaction(Customer c)
 	{
 		Random rGen = new Random();
-		int cWeight, oWeight, dWeight, wWeight = 0;
+		int cWeight, oWeight, dWeight = 0;
 		int totalWeight = 100;
 		int tType = rGen.nextInt(100) + 1;
 		switch(c.getNumOfAccounts())
@@ -67,7 +62,6 @@ public class Generator {
 				cWeight = 5;
 				oWeight = 5;
 				dWeight = 45;
-				wWeight = 45;
 				if(tType > 0 && tType <= cWeight)
 				{
 					Transaction t = new Transaction(Transaction.Choices.CLOSE,0);
@@ -103,7 +97,6 @@ public class Generator {
 			{
 				cWeight = 10;
 				dWeight = 45;
-				wWeight = 45;
 				if(tType > 0 && tType <= cWeight)
 				{
 					int accNo = rGen.nextInt(2);
@@ -139,7 +132,6 @@ public class Generator {
 				cWeight = -1;
 				oWeight = -1;
 				dWeight = -1;
-				wWeight = -1;
 				return null;
 			}
 		}
@@ -166,6 +158,13 @@ public class Generator {
 		CustomerQueue q = new CustomerQueue();
 		Random randGen = new Random();
 		int length = randGen.nextInt(this.clist.size()) + 1;
+		
+		//Make sure we have enough customers in the queue
+		//Minimum length 5
+		if(length < 5)
+		{
+			length = length + 5;
+		}
 		for(int i = 0; i < length; i++)
 		{
 			q.add(generateItem());
