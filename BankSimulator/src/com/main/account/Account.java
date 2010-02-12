@@ -50,8 +50,21 @@ public class Account {
 		return id;
 	}
 	
+	//Adds a zero if the balance has a trailing zero
+	// e.g. balance 150.2 becomes 150.20
 	public String toString(){
-		return id + " " + balance;
+		String strBalance = Double.toString(this.balance);
+		
+		int indexOfDecPlace = strBalance.lastIndexOf(".");
+		String afterDecPlace = strBalance.substring(indexOfDecPlace);
+		if(afterDecPlace.length() <= 2)
+		{
+			return this.id + " " + this.balance + "0";
+		}
+		else
+		{
+			return this.id + " " + this.balance;
+		}
 	}
 	
 }

@@ -8,15 +8,70 @@ import com.main.account.Account;
 
 public class AccountTest {
 	
-	@Test public void testToString()
+	@Test public void testCreateAccount()
 	{
-		Account acc = new Account(123.12, 60012);
+		//Test default
 		
-		String expected = "60012 123.12";
-		String actual = acc.toString();
-		String message = "Failed for id 60012, balance 123.12";
+		Account acc1 = new Account();
 		
-		assertEquals(message, expected, actual);
+		String expected1 = "60001 100.00";
+		String actual1 = acc1.toString();
+		String message1 = "Create failed for default account";
+		
+		assertEquals(message1, expected1, actual1);
+		
+		//Test Conceptual Upper Bound - id 69999 balance 100000.00
+		
+		Account acc2 = new Account(100000.00, 69999);
+		
+		String expected2 = "69999 100000.00";
+		String actual2 = acc2.toString();
+		String message2 = "Create failed for id - 69999 balance 100000.0";
+		
+		assertEquals(message2, expected2, actual2);
+		
+		//Test Conceptual Lower Bound - id 60000 balance 0.0
+		
+		Account acc3 = new Account(0.0, 60000);
+		
+		String expected3 = "60000 0.00";
+		String actual3 = acc3.toString();
+		String message3 = "Create failed for id - 60000 balance 0.0";
+		
+		assertEquals(message3, expected3, actual3);
+		
+	}
+	
+	@Test public void testToString()
+	{	
+		//Test 1 - Middle
+		Account acc1 = new Account(123.12, 60012);
+		
+		String expected1 = "60012 123.12";
+		String actual1 = acc1.toString();
+		String message1 = "Failed for id 60012, balance 123.12";
+		
+		assertEquals(message1, expected1, actual1);
+		
+		//Test 2 - Lower Bound
+		Account acc2 = new Account(0.0 , 60000);
+		
+		String expected2 = "60000 0.00";
+		String actual2 = acc2.toString();
+		String message2 = "Failed for id 60000, balance 0.0";
+		
+		assertEquals(message2, expected2, actual2);
+		
+		//Test 3 - Upper Bound
+		
+		Account acc3 = new Account (100000.0, 69999);
+		
+		String expected3 = "69999 100000.00";
+		String actual3 = acc3.toString();
+		String message3 = "Failed for id 69999, balance 100000.0";
+		
+		assertEquals(message3, expected3, actual3);
+		
 		
 	}
 	

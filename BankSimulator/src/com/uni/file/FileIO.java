@@ -34,6 +34,7 @@ public class FileIO {
 			{
 				list.add(parseAccountLine(scanner.next()));
 			}
+			scanner.close();
 			return list;
 		}
 		catch(FileNotFoundException e){return null;}
