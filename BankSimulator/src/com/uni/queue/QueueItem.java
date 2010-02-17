@@ -1,6 +1,7 @@
 package com.uni.queue;
 
 import com.main.account.Transaction;
+import com.main.account.TransactionList;
 import com.uni.customer.Customer;
 
 public class QueueItem {
@@ -10,6 +11,8 @@ public class QueueItem {
 	Transaction d;
 	int custId;
 	
+	TransactionList tList;
+	
 	public QueueItem(Customer c, Transaction d){
 		this.c = c;
 		this.d = d;
@@ -17,6 +20,19 @@ public class QueueItem {
 		this.custId = masterNumber;
 	}
 	
+	public QueueItem(Customer c, TransactionList tList){
+		this.c = c;
+		this.tList = tList;
+		masterNumber++;
+		this.custId = masterNumber;
+	}
+	
+	public TransactionList getTransactions(){
+		return this.tList;
+	}
+	
+	
+	//dep
 	public Transaction getTransaction(){
 		return d;
 	}

@@ -8,6 +8,7 @@ import java.util.Random;
 import com.main.account.Account;
 import com.main.account.AccountList;
 import com.main.account.Transaction;
+import com.main.account.TransactionList;
 import com.uni.Logging.Log;
 import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
@@ -33,12 +34,20 @@ public class Generator {
 		if(c.getStatus() == 0)
 		{
 			c.setStatus(1);
-			Transaction t = getTransaction(c);
-			QueueItem q = new QueueItem(c, t);
+			int numTrans = rGen.nextInt(3);
+			TransactionList tList = new TransactionList();
+				
+			
+			for(int i=0; i<= numTrans; i++){
+				tList.add(getTransaction(c));
+			}
+			QueueItem q = new QueueItem(c, tList);
 			return q;
 		}
 		else
 		{
+			//what if we get here and every one is 
+			//in the queue neil ? 
 			QueueItem q = generateItem();
 			return q;
 		}
