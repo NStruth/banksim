@@ -22,7 +22,7 @@ public class Teller {
 				
 		int acNo;
 		Account ac;
-		Integer value; //can't cast object to int
+		Double value; //can't cast object to int
 		
 		
 		//some of this will have repeated code so we should try do the generic stuff 
@@ -35,8 +35,10 @@ public class Teller {
 			Log.writeMessage("Customer: " + cust.getFullName() + " No: " + q.getCustNo());
 			acNo = (Integer)t.getSecondaryAux();
 			ac = this.al.getAccountAtIndex(acNo);
-			value = (Integer)t.getPrimaryAux();
-			ac.withDraw(value);
+			value = (Double)t.getPrimaryAux();
+			if(ac.withDraw(value)){
+				Statistics.TOTALS_WITHDRAW += value;
+			}
 			Log.writeMessage("\n*** End of Transaction ***\n");
 			break;
 		case DEPOSIT:
@@ -45,8 +47,9 @@ public class Teller {
 			Log.writeMessage("Customer: " + cust.getFullName() + " No: " + q.getCustNo());
 			acNo = (Integer)t.getSecondaryAux();
 			ac = this.al.getAccountAtIndex(acNo);
-			value = (Integer)t.getPrimaryAux();
+			value = (Double)t.getPrimaryAux();
 			ac.deposit(value);
+			Statistics.TOTALS_DEPOSTIT += value;
 			Log.writeMessage("\n*** End of Transaction ***\n");
 			break;
 		case OPEN:

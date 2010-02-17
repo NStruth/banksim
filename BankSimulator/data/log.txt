@@ -17,11 +17,11 @@ Creating account : 60015
 Printing account list
 60001 1000.19
 60002 500.23
-60003 600.1
-60004 500.3
+60003 600.10
+60004 500.30
 60005 1000.54
 60006 200.02
-60007 234.2
+60007 234.20
 60008 1234.56
 60009 321.32
 60010 654.32
@@ -29,7 +29,7 @@ Printing account list
 60012 190.21
 60013 239.89
 60014 478.29
-60015 836.1
+60015 836.10
 
 DISPLAYING CUSTOMER LIST
 Neil Struth 1 Test Street
@@ -52,17 +52,52 @@ Mary Christmas 13 North Pole
 Polly Ester 6 Church Street
 Tad Pohl 3 Pond Lane
 Warren Peace 4 Paper Key Street
-*** Processing deposit Transaction***
+*** Processing withdraw transaction ***
 
-Customer: Ian Khama No: 1001
-Deposit: 27.0 New Balance: 227.02
+Customer: Gordon Brown No: 1001
+Withdraw: 123.89 New Balance: 376.41
+
+*** End of Transaction ***
+
+*** Processing withdraw transaction ***
+
+Customer: Ian Khama No: 1002
+Withdraw: 124.93 New Balance: 75.09
+
+*** End of Transaction ***
+
+*** Processing withdraw transaction ***
+
+Customer: Al Bundy No: 1003
+Withdraw: 49.0 New Balance: 823.12
+
+*** End of Transaction ***
+
+*** Processing withdraw transaction ***
+
+Customer: Angela Merkel No: 1004
+Withdraw: 9.5 New Balance: 311.82
 
 *** End of Transaction ***
 
 *** Processing deposit Transaction***
 
-Customer: Carlton Banks No: 1002
-Deposit: 5.0 New Balance: 877.12
+Customer: Steven Harper No: 1005
+Deposit: 195.42 New Balance: 1429.98
+
+*** End of Transaction ***
+
+
+*** Processing open Transaction ***
+
+Account Number: 60016 added to customer : Warren Peace
+
+*** End of Transaction ***
+
+*** Processing withdraw transaction ***
+
+Customer: Constance Noring No: 1007
+Withdraw: 94.85 New Balance: 145.04
 
 *** End of Transaction ***
 

@@ -18,7 +18,7 @@ public class GuiDisplay extends JFrame{
 	private int north = 5;
 	private int westLabel = 5;
 	private int westText = 125;
-	private int padding = 20;
+	private int padding = 35;
 	
 	
 	public GuiDisplay(){
@@ -35,11 +35,16 @@ public class GuiDisplay extends JFrame{
 		jp.setLayout(layout);
 		
 		
+		JLabel header = new JLabel("Royal Bank of Jon");
+		addPair("Royal Bank of Jon", 0, 75);
+		
 		addPair("Customers Served:",Statistics.CUSTOMERS_SERVED,0);
 		addPair("Accounts Opened:",Statistics.ACCOUNTS_OPENED,20);
 		addPair("Accounts Closed:",Statistics.ACCOUNTS_CLOSED,20);
 		addPair("Account Deposits:",Statistics.ACCOUNT_DEPOSIT,20);
-		addPair("Account Withdraw:",Statistics.ACCOUNT_WITHDRAW,20);
+		addPair("Total:", Statistics.TOTALS_DEPOSTIT,40);
+		addPair("Account Withdraw:", "£" + Statistics.ACCOUNT_WITHDRAW,20);
+		addPair("Total:", Statistics.TOTALS_WITHDRAW,40);
 		
 
         
@@ -49,6 +54,11 @@ public class GuiDisplay extends JFrame{
 	
 	private void addPair(String label, int intMessage, int hOffset){
 		String message = intMessage + "";
+		addPair(label,message, hOffset);
+	}
+	
+	private void addPair(String label, double doubleMessage, int hOffset){
+		String message = doubleMessage + "";
 		addPair(label,message, hOffset);
 	}
 	
