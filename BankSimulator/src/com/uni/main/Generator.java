@@ -29,14 +29,6 @@ public class Generator {
 	{
 		Random rGen = new Random();
 		int cNo = rGen.nextInt(clist.size());
-		
-		
-		//minimum queue length
-		if(cNo < 5 && clist.size() > 5)
-		{
-			cNo = 5;
-		}
-		
 		Customer c = clist.get(cNo);
 		if(c.getStatus() == 0)
 		{
