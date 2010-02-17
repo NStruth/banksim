@@ -20,7 +20,7 @@ public class Log {
 		}
 	}
 	public static void writeMessage(String message){
-		System.out.println(message);
+		//System.out.println(message);
 		try{
 			BufferedWriter writer = new BufferedWriter(new FileWriter("data/log.txt", true));
 			writer.write(message + '\n');

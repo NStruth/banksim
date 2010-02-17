@@ -7,10 +7,10 @@ public class Account {
 
 	public static int masterNumber = 60000;
 	private int id;
-	private double balance;
+	private int balance; //in pence
 		
 	//New accounts are given an unique id starting at 60000
-	public Account(double balance, int id){
+	public Account(int balance, int id){
 		Log.writeMessage("Creating account : "+id);
 		this.balance = balance;
 		this.id = id;
@@ -21,13 +21,13 @@ public class Account {
 	//default customer is given £100 to start
 	public Account()
 	{
-		this.balance = 100.00;
+		this.balance = 10000;
 		masterNumber++;
 		this.id = masterNumber;
 	}
 	
 	
-	public boolean withDraw(double value){
+	public boolean withDraw(int value){
 		if(value > this.balance){
 			Log.writeMessage("Insufficient Funds");
 			return false;
@@ -47,7 +47,7 @@ public class Account {
 		Log.writeMessage("Balance: " + this.balance);
 	}
 	
-	public double getBalance()
+	public int getBalance()
 	{
 		return this.balance;
 	}

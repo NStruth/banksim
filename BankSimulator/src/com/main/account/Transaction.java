@@ -20,7 +20,7 @@ public class Transaction {
 	/*
 	 * Constructor when withdrawing money
 	 */
-	public Transaction(Choices c, double aux, int ac){
+	public Transaction(Choices c, int aux, int ac){
 		this.choice = c;
 		this.primaryAux = aux;
 		this.secondaryAux = ac;

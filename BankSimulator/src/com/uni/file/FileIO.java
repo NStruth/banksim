@@ -43,12 +43,12 @@ public class FileIO {
 	private Account parseAccountLine(String line)
 	{
 			int id;
-			double balance;
+			int balance;
 			Scanner lScanner = new Scanner(line);
 			
 			lScanner.useDelimiter("::");
 			id = Integer.parseInt(lScanner.next());
-			balance = lScanner.nextDouble();
+			balance = lScanner.nextInt();
 			Account a = new Account(balance, id);
 			return a;
 	}

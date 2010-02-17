@@ -15,21 +15,21 @@ Creating account : 60014
 Creating account : 60015
 
 Printing account list
-60001 1000.19
-60002 500.23
-60003 600.10
-60004 500.30
-60005 1000.54
-60006 200.02
-60007 234.20
-60008 1234.56
-60009 321.32
-60010 654.32
-60011 872.12
-60012 190.21
-60013 239.89
-60014 478.29
-60015 836.10
+60001 1000190
+60002 500230
+60003 600100
+60004 500300
+60005 1000540
+60006 200020
+60007 234200
+60008 1234560
+60009 321320
+60010 654320
+60011 872120
+60012 190210
+60013 239890
+60014 478290
+60015 836100
 
 DISPLAYING CUSTOMER LIST
 Neil Struth 1 Test Street
@@ -54,36 +54,15 @@ Tad Pohl 3 Pond Lane
 Warren Peace 4 Paper Key Street
 *** Processing withdraw transaction ***
 
-Customer: Gordon Brown No: 1001
-Withdraw: 123.89 New Balance: 376.41
-
-*** End of Transaction ***
-
-*** Processing withdraw transaction ***
-
-Customer: Ian Khama No: 1002
-Withdraw: 124.93 New Balance: 75.09
-
-*** End of Transaction ***
-
-*** Processing withdraw transaction ***
-
-Customer: Al Bundy No: 1003
-Withdraw: 49.0 New Balance: 823.12
-
-*** End of Transaction ***
-
-*** Processing withdraw transaction ***
-
-Customer: Angela Merkel No: 1004
-Withdraw: 9.5 New Balance: 311.82
+Customer: Frank Sauzee No: 1001
+Withdraw: 6624 New Balance: 53386
 
 *** End of Transaction ***
 
 *** Processing deposit Transaction***
 
-Customer: Steven Harper No: 1005
-Deposit: 195.42 New Balance: 1429.98
+Customer: Gordon Brown No: 1002
+Deposit: 1513.0 New Balance: 101567
 
 *** End of Transaction ***
 
@@ -96,8 +75,29 @@ Account Number: 60016 added to customer : Warren Peace
 
 *** Processing withdraw transaction ***
 
-Customer: Constance Noring No: 1007
-Withdraw: 94.85 New Balance: 145.04
+Customer: Neil Struth No: 1004
+Withdraw: 15269 New Balance: 34754
+
+*** End of Transaction ***
+
+*** Processing deposit Transaction***
+
+Customer: Jon Mirhadi No: 1005
+Deposit: 9448.0 New Balance: 62834
+
+*** End of Transaction ***
+
+
+*** Processing open Transaction ***
+
+Account Number: 60017 added to customer : Mary Christmas
+
+*** End of Transaction ***
+
+*** Processing withdraw transaction ***
+
+Customer: Barack Obama No: 1007
+Withdraw: 11656 New Balance: 38374
 
 *** End of Transaction ***
 

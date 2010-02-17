@@ -15,7 +15,7 @@ public class GuiDisplay extends JFrame{
 	SpringLayout layout;
 	JPanel jp;
 	
-	private int north = 5;
+	private int north = 35;
 	private int westLabel = 5;
 	private int westText = 125;
 	private int padding = 35;
@@ -34,17 +34,22 @@ public class GuiDisplay extends JFrame{
 		layout = new SpringLayout();
 		jp.setLayout(layout);
 		
-		
+		Font f = this.getFont();
+		f = f.deriveFont(new Float(20));
 		JLabel header = new JLabel("Royal Bank of Jon");
-		addPair("Royal Bank of Jon", 0, 75);
+		header.setFont(f);
+		
+		jp.add(header);
+		
+		//addPair("Royal Bank of Jon", "", 90);
 		
 		addPair("Customers Served:",Statistics.CUSTOMERS_SERVED,0);
 		addPair("Accounts Opened:",Statistics.ACCOUNTS_OPENED,20);
 		addPair("Accounts Closed:",Statistics.ACCOUNTS_CLOSED,20);
 		addPair("Account Deposits:",Statistics.ACCOUNT_DEPOSIT,20);
-		addPair("Total:", Statistics.TOTALS_DEPOSTIT,40);
-		addPair("Account Withdraw:", "£" + Statistics.ACCOUNT_WITHDRAW,20);
-		addPair("Total:", Statistics.TOTALS_WITHDRAW,40);
+		addPair("Total:", Statistics.toPoundsAndPence(Statistics.TOTALS_DEPOSTIT),40);
+		addPair("Account Withdraw:", Statistics.ACCOUNT_WITHDRAW,20);
+		addPair("Total:", Statistics.toPoundsAndPence(Statistics.TOTALS_WITHDRAW),40);
 		
 
         

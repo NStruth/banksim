@@ -79,7 +79,7 @@ public class Generator {
 					{
 						if(tType > oWeight + cWeight && tType <= dWeight + oWeight + cWeight)
 						{
-							Transaction t = new Transaction(Transaction.Choices.DEPOSIT, roundTwoDecimals(rGen.nextDouble() * 200), c.getAccountId(0));
+							Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), c.getAccountId(0));
 							return t;
 						}
 						else
@@ -110,7 +110,7 @@ public class Generator {
 					if(tType > cWeight && tType <= dWeight + cWeight)
 					{
 						int accNo = rGen.nextInt(2);
-						Transaction t = new Transaction(Transaction.Choices.DEPOSIT, roundTwoDecimals(rGen.nextDouble() * 200), c.getAccountId(accNo));
+						Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), c.getAccountId(accNo));
 						return t;
 					}
 					else
@@ -140,24 +140,23 @@ public class Generator {
 		
 	}
 	
-	private double getWithdrawAmount(Customer c, int acc)
+	private int getWithdrawAmount(Customer c, int acc)
 	{
 		Account a = aList.getAccountAtIndex(acc);
 		a.toString();
 		Random rGen = new Random();
 	
-		if(a.getBalance() < 200)
+		if(a.getBalance() < 20000)
 		{
-			double amount = rGen.nextDouble() * a.getBalance();
-			double roundAmount = roundTwoDecimals(amount);
-			
-			return roundAmount;
+			int amount = rGen.nextInt(20000);
+			System.out.println("Amount:" + amount);	
+			return amount;
 		}
 		else
 		{
-			double amount = rGen.nextDouble() * 200;
-			double roundAmount = roundTwoDecimals(amount);
-			return roundAmount;
+			int amount = rGen.nextInt(20001);
+			System.out.println("amount:" + amount);
+			return amount;
 		}
 	}
 	

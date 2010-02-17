@@ -1,4 +1,4 @@
-package com.uni.testing;
+/*package com.uni.testing;
 
 import static org.junit.Assert.*;
 
@@ -124,3 +124,4 @@ public class AccountTest {
 	}
 
 }
+*/
