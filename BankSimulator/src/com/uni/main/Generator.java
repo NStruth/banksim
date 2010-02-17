@@ -28,6 +28,14 @@ public class Generator {
 	{
 		Random rGen = new Random();
 		int cNo = rGen.nextInt(clist.size());
+		
+		
+		//minimum queue length
+		if(cNo < 5 && clist.size() > 5)
+		{
+			cNo = 5;
+		}
+		
 		Customer c = clist.get(cNo);
 		if(c.getStatus() == 0)
 		{
@@ -78,7 +86,7 @@ public class Generator {
 					{
 						if(tType > oWeight + cWeight && tType <= dWeight + oWeight + cWeight)
 						{
-							Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(200), c.getAccountId(0));
+							Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextDouble() * 200, c.getAccountId(0));
 							return t;
 						}
 						else
@@ -109,7 +117,7 @@ public class Generator {
 					if(tType > cWeight && tType <= dWeight + cWeight)
 					{
 						int accNo = rGen.nextInt(2);
-						Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(200), c.getAccountId(accNo));
+						Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextDouble() * 200, c.getAccountId(accNo));
 						return t;
 					}
 					else
@@ -139,7 +147,7 @@ public class Generator {
 		
 	}
 	
-	private int getWithdrawAmount(Customer c, int acc)
+	private double getWithdrawAmount(Customer c, int acc)
 	{
 		Account a = aList.getAccountAtIndex(acc);
 		a.toString();
@@ -147,10 +155,10 @@ public class Generator {
 	
 		if(a.getBalance() < 200)
 		{
-			return rGen.nextInt((int) a.getBalance()) + 1;
+			return rGen.nextDouble() * a.getBalance();
 		}
 		else
-			return rGen.nextInt(201);
+			return rGen.nextDouble() * 200;
 	}
 	
 	public CustomerQueue generate()
