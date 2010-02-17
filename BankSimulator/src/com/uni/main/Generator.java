@@ -2,6 +2,7 @@
 from a list of customers - Neil Struth */
 package com.uni.main;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import com.main.account.Account;
@@ -86,7 +87,7 @@ public class Generator {
 					{
 						if(tType > oWeight + cWeight && tType <= dWeight + oWeight + cWeight)
 						{
-							Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextDouble() * 200, c.getAccountId(0));
+							Transaction t = new Transaction(Transaction.Choices.DEPOSIT, roundTwoDecimals(rGen.nextDouble() * 200), c.getAccountId(0));
 							return t;
 						}
 						else
@@ -117,7 +118,7 @@ public class Generator {
 					if(tType > cWeight && tType <= dWeight + cWeight)
 					{
 						int accNo = rGen.nextInt(2);
-						Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextDouble() * 200, c.getAccountId(accNo));
+						Transaction t = new Transaction(Transaction.Choices.DEPOSIT, roundTwoDecimals(rGen.nextDouble() * 200), c.getAccountId(accNo));
 						return t;
 					}
 					else
@@ -155,10 +156,17 @@ public class Generator {
 	
 		if(a.getBalance() < 200)
 		{
-			return rGen.nextDouble() * a.getBalance();
+			double amount = rGen.nextDouble() * a.getBalance();
+			double roundAmount = roundTwoDecimals(amount);
+			
+			return roundAmount;
 		}
 		else
-			return rGen.nextDouble() * 200;
+		{
+			double amount = rGen.nextDouble() * 200;
+			double roundAmount = roundTwoDecimals(amount);
+			return roundAmount;
+		}
 	}
 	
 	public CustomerQueue generate()
@@ -179,5 +187,10 @@ public class Generator {
 		}
 		return q;
 	}
+	
+	private double roundTwoDecimals(double d) {
+		DecimalFormat twoDForm = new DecimalFormat("#.##");
+		return Double.valueOf(twoDForm.format(d));
+		}
 
 }
