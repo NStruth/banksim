@@ -9,6 +9,7 @@ import com.main.account.Account;
 import com.main.account.AccountList;
 import com.main.account.Transaction;
 import com.main.account.TransactionList;
+import com.uni.Exceptions.NonExistantAccountException;
 import com.uni.Logging.Log;
 import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
@@ -34,13 +35,16 @@ public class Generator {
 		if(c.getStatus() == 0)
 		{
 			c.setStatus(1);
+			//generate between 1 and 3 transactions - inclusive
 			int numTrans = rGen.nextInt(3);
 			TransactionList tList = new TransactionList();
 				
 			
 			for(int i=0; i<= numTrans; i++){
-				tList.add(getTransaction(c));
+				if(!tList.containsClose())
+					tList.add(getTransaction(c));
 			}
+			
 			QueueItem q = new QueueItem(c, tList);
 			return q;
 		}
@@ -74,32 +78,14 @@ public class Generator {
 				dWeight = 45;
 				if(tType > 0 && tType <= cWeight)
 				{
-					Transaction t = new Transaction(Transaction.Choices.CLOSE,0);
-					return t;
+					return generateClose(0);
 				}
-				else
-				{
-					if(tType > cWeight && tType <= oWeight + cWeight)
-					{
-						Transaction t = new Transaction(Transaction.Choices.OPEN);
-						return t;
-					}
-					else
-					{
-						if(tType > oWeight + cWeight && tType <= dWeight + oWeight + cWeight)
-						{
-							Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), c.getAccountId(0));
-							return t;
-						}
-						else
-						{
-							if(tType > dWeight + oWeight + cWeight && tType <= totalWeight)
-							{
-								Transaction t = new Transaction(Transaction.Choices.WITHDRAW, getWithdrawAmount(c, c.getAccountId(0)), c.getAccountId(0));
-								return t;
-							}
-						}
-					}
+				else if(tType > cWeight && tType <= oWeight + cWeight){
+					return new Transaction(Transaction.Choices.OPEN);
+				}else if(tType > oWeight + cWeight && tType <= dWeight + oWeight + cWeight){
+					return generateDeposit(c,rGen, c.getAccountNo(0));
+				}else if(tType > dWeight + oWeight + cWeight && tType <= totalWeight){
+					return generateWithdraw(c, c.getAccountNo(0));
 				}
 				break;
 			}
@@ -107,35 +93,18 @@ public class Generator {
 			{
 				cWeight = 10;
 				dWeight = 45;
-				if(tType > 0 && tType <= cWeight)
-				{
-					int accNo = rGen.nextInt(2);
-					Log.writeMessage("ACCNO = " + accNo);
-					Transaction t = new Transaction(Transaction.Choices.CLOSE, accNo);
-					return t;
-				}
-				else
-				{
-					if(tType > cWeight && tType <= dWeight + cWeight)
-					{
-						int accNo = rGen.nextInt(2);
-						Transaction t = new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), c.getAccountId(accNo));
-						return t;
-					}
-					else
-					{
-						if(tType > dWeight + cWeight && tType <= totalWeight)
-						{
-							int accNo = rGen.nextInt(2);
-							Transaction t = new Transaction(Transaction.Choices.WITHDRAW, getWithdrawAmount(c, c.getAccountId(accNo)), c.getAccountId(accNo));
-							return t;
-						}
-						else
-						{
-							return null;
-						}
-					}
-				}
+				if(tType > 0 && tType <= cWeight){
+					int accId = rGen.nextInt(2);
+					return generateClose(accId);
+				}else if(tType > cWeight && tType <= dWeight + cWeight){
+					int accId = rGen.nextInt(2);
+					return generateDeposit(c,rGen, c.getAccountNo(accId));
+				}else if(tType > dWeight + cWeight && tType <= totalWeight){
+					int accId = rGen.nextInt(2);
+					return generateWithdraw(c, c.getAccountNo(accId));
+				}else{
+					return null;
+				}	
 			}
 			default:
 			{
@@ -151,22 +120,27 @@ public class Generator {
 	
 	private int getWithdrawAmount(Customer c, int acc)
 	{
-		Account a = aList.getAccountAtIndex(acc);
-		a.toString();
-		Random rGen = new Random();
-	
-		if(a.getBalance() < 20000)
-		{
-			int amount = rGen.nextInt(20000);
-			System.out.println("Amount:" + amount);	
-			return amount;
+		try{
+			Account a = aList.getAccountAtIndex(acc);
+			a.toString();
+			Random rGen = new Random();
+		
+			if(a.getBalance() < 20000)
+			{
+				int amount = rGen.nextInt(20000);
+				//System.out.println("Amount:" + amount);	
+				return amount;
+			}
+			else
+			{
+				int amount = rGen.nextInt(20001);
+				//System.out.println("amount:" + amount);
+				return amount;
+			}
+		}catch(NonExistantAccountException e){
+			return 0;
 		}
-		else
-		{
-			int amount = rGen.nextInt(20001);
-			System.out.println("amount:" + amount);
-			return amount;
-		}
+		
 	}
 	
 	public CustomerQueue generate()
@@ -188,9 +162,16 @@ public class Generator {
 		return q;
 	}
 	
-	private double roundTwoDecimals(double d) {
-		DecimalFormat twoDForm = new DecimalFormat("#.##");
-		return Double.valueOf(twoDForm.format(d));
-		}
+	private Transaction generateDeposit(Customer c, Random rGen, int accNo){
+		return  new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), accNo);
+	}
+	
+	private Transaction generateClose(int accId){
+		return new Transaction(Transaction.Choices.CLOSE, accId);
+	}
+
+	private Transaction generateWithdraw(Customer c, int accId ){
+		return new Transaction(Transaction.Choices.WITHDRAW, getWithdrawAmount(c, accId), accId);
+	}
 
 }

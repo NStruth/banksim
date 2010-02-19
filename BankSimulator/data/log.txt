@@ -52,170 +52,112 @@ Mary Christmas 13 North Pole
 Polly Ester 6 Church Street
 Tad Pohl 3 Pond Lane
 Warren Peace 4 Paper Key Street
-ACCNO = 0
-Withdraw: 19224 New Balance: 4765
+Withdraw: 13490 New Balance: 46520
 *** Processing withdraw transaction ***
-Customer: Constance Noring No: 1001Acc:60013
+Customer: Jon Mirhadi No: 1001Acc:60003
 *** End of Transaction ***
 
 
-Insufficient Funds
-*** Processing withdraw transaction ***
-Customer: Constance Noring No: 1001Acc:60013
+Deposit: 2019.0 New Balance: 48539
+*** Processing deposit Transaction***
+
+Customer: Jon Mirhadi No: 1001Acc:60003
 *** End of Transaction ***
 
 
-Insufficient Funds
-*** Processing withdraw transaction ***
-Customer: Constance Noring No: 1001Acc:60013
+Deposit: 4331.0 New Balance: 52870
+*** Processing deposit Transaction***
+
+Customer: Jon Mirhadi No: 1001Acc:60003
 *** End of Transaction ***
 
 
-Withdraw: 19568 New Balance: 30462
+Withdraw: 390 New Balance: 31742
 *** Processing withdraw transaction ***
-Customer: Barack Obama No: 1002Acc:60004
+Customer: Angela Merkel No: 1002Acc:60009
 *** End of Transaction ***
 
 
-Withdraw: 10885 New Balance: 19577
-*** Processing withdraw transaction ***
-Customer: Barack Obama No: 1002Acc:60004
+Deposit: 8174.0 New Balance: 39916
+*** Processing deposit Transaction***
+
+Customer: Angela Merkel No: 1002Acc:60009
 *** End of Transaction ***
 
 
-Account Number: 60016 added to customer : Barack Obama
+Deposit: 3732.0 New Balance: 43648
+*** Processing deposit Transaction***
+
+Customer: Angela Merkel No: 1002Acc:60009
+*** End of Transaction ***
+
+
+Withdraw: 1932 New Balance: 63500
+*** Processing withdraw transaction ***
+Customer: Al Bundy No: 1003Acc:60010
+*** End of Transaction ***
+
+
+Deposit: 5692.0 New Balance: 92904
+*** Processing deposit Transaction***
+
+Customer: Al Bundy No: 1003Acc:60011
+*** End of Transaction ***
+
+
+Withdraw: 4190 New Balance: 88714
+*** Processing withdraw transaction ***
+Customer: Al Bundy No: 1003Acc:60011
+*** End of Transaction ***
+
+
+Withdraw: 6118 New Balance: 43912
+*** Processing withdraw transaction ***
+Customer: Barack Obama No: 1004Acc:60004
+*** End of Transaction ***
+
+
+Deposit: 3755.0 New Balance: 47667
+*** Processing deposit Transaction***
+
+Customer: Barack Obama No: 1004Acc:60004
+*** End of Transaction ***
+
+
+Account Number: 60016 added to customer : Emma Royds
 
 *** Processing open Transaction ***
 
 *** End of Transaction ***
 
-Withdraw: 16677 New Balance: 43333
+Withdraw: 7270 New Balance: 76340
 *** Processing withdraw transaction ***
-Customer: Frank Sauzee No: 1003Acc:60003
+Customer: Emma Royds No: 1005Acc:60015
 *** End of Transaction ***
 
 
-AccountNo : 60003 removed
-
-
-*** Processing close Transaction ***
-Customer = Frank SauzeePrimaryAux = 00
-*** End of Transaction ***
-
-Deposit: 6936.0 New Balance: 72368
-*** Processing deposit Transaction***
-
-Customer: Carlton Banks No: 1004Acc:60010
-*** End of Transaction ***
-
-
-Withdraw: 10968 New Balance: 61400
-*** Processing withdraw transaction ***
-Customer: Carlton Banks No: 1004Acc:60010
-*** End of Transaction ***
-
-
-Withdraw: 5140 New Balance: 82072
-*** Processing withdraw transaction ***
-Customer: Carlton Banks No: 1004Acc:60011
-*** End of Transaction ***
-
-
-Deposit: 4953.0 New Balance: 48286
-*** Processing deposit Transaction***
-
-Customer: Jon Mirhadi No: 1005Acc:60003
-*** End of Transaction ***
-
-
-Withdraw: 177 New Balance: 48109
-*** Processing withdraw transaction ***
-Customer: Jon Mirhadi No: 1005Acc:60003
-*** End of Transaction ***
-
-
-Deposit: 6416.0 New Balance: 29836
-*** Processing deposit Transaction***
-
-Customer: Hassanal Bolkiah No: 1006Acc:60007
-*** End of Transaction ***
-
-
-Account Number: 60017 added to customer : Steven Harper
+Account Number: 60017 added to customer : Warren Peace
 
 *** Processing open Transaction ***
 
 *** End of Transaction ***
 
-Deposit: 9934.0 New Balance: 133390
-*** Processing deposit Transaction***
-
-Customer: Steven Harper No: 1007Acc:60008
-*** End of Transaction ***
-
-
-Deposit: 6947.0 New Balance: 140337
-*** Processing deposit Transaction***
-
-Customer: Steven Harper No: 1007Acc:60008
-*** End of Transaction ***
-
-
-Account Number: 60018 added to customer : Mary Christmas
-
-*** Processing open Transaction ***
-
-*** End of Transaction ***
-
-Account Number: 60019 added to customer : Mary Christmas
-
-*** Processing open Transaction ***
-
-*** End of Transaction ***
-
-Account Number: 60020 added to customer : Warren Peace
-
-*** Processing open Transaction ***
-
-*** End of Transaction ***
-
-Account Number: 60021 added to customer : Eric Blair
-
-*** Processing open Transaction ***
-
-*** End of Transaction ***
-
-Deposit: 7735.0 New Balance: 55564
-*** Processing deposit Transaction***
-
-Customer: Dick Face No: 1011Acc:60014
-*** End of Transaction ***
-
-
-Deposit: 1521.0 New Balance: 20542
-*** Processing deposit Transaction***
-
-Customer: Chris Cross No: 1012Acc:60012
-*** End of Transaction ***
-
-
-Deposit: 396.0 New Balance: 61796
-*** Processing deposit Transaction***
-
-Customer: Al Bundy No: 1013Acc:60010
-*** End of Transaction ***
-
-
-Withdraw: 5683 New Balance: 56113
+Withdraw: 19354 New Balance: 28313
 *** Processing withdraw transaction ***
-Customer: Al Bundy No: 1013Acc:60010
+Customer: Gordon Brown No: 1007Acc:60004
 *** End of Transaction ***
 
 
-AccountNo : 60011 removed
+Deposit: 4296.0 New Balance: 104350
+*** Processing deposit Transaction***
 
-
-*** Processing close Transaction ***
-Customer = Al BundyPrimaryAux = 00
+Customer: Gordon Brown No: 1007Acc:60005
 *** End of Transaction ***
+
+
+Withdraw: 7667 New Balance: 55833
+*** Processing withdraw transaction ***
+Customer: Carlton Banks No: 1008Acc:60010
+*** End of Transaction ***
+
 

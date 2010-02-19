@@ -53,14 +53,9 @@ public class Customer {
 		return this.accList.size();
 	}
 	
-	public int getAccountId(int id)
-	{
-		if(this.getNumOfAccounts() >= id)
-		{
-			return this.accList.get(id);
-		}
-		else return -1;
-
+	public int getAccountNo(int acId){
+		int acNo = accList.get(acId);
+		return acNo;
 	}
 	
 	public void addAccount(Account ac)
@@ -76,7 +71,7 @@ public class Customer {
 	{
 		if(this.getNumOfAccounts() >= id)
 		{
-			Log.writeMessage("AccountNo : " + this.getAccountId(id) + " removed\n");
+			Log.writeMessage("AccountNo : " + this.getAccountNo(id) + " removed\n");
 			this.accList.remove(id);	
 		}
 		else

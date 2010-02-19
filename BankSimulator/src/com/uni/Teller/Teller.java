@@ -4,6 +4,7 @@ import com.main.account.Account;
 import com.main.account.AccountList;
 import com.main.account.Transaction;
 import com.main.account.TransactionList;
+import com.uni.Exceptions.NonExistantAccountException;
 import com.uni.Logging.Log;
 import com.uni.customer.Customer;
 import com.uni.main.Statistics;
@@ -31,35 +32,43 @@ public class Teller {
 			int acNo;
 			Account ac;
 			int value; //can't cast object to int
-			
-			
-			//some of this will have repeated code so we should try do the generic stuff 
-			//before the switch or in a method
+
+
 			switch(t.getChoice()){
 			case WITHDRAW:
-				Statistics.ACCOUNT_WITHDRAW++;
-	
-				message += "*** Processing withdraw transaction ***\n";
-				
 				acNo = (Integer)t.getSecondaryAux();
-				message +="Customer: " + cust.getFullName() + " No: " + q.getCustNo() + "Acc:" + acNo;;
-				ac = this.al.getAccountAtIndex(acNo);
-				value = (Integer)t.getPrimaryAux();
-				if(ac.withDraw(value)){
-					Statistics.TOTALS_WITHDRAW += value;
+				//some message stuff
+				message += "*** Processing withdraw transaction ***\n";
+				message +="Customer: " + cust.getFullName() + " No: " + q.getCustNo() + "Acc:" + acNo;
+				try{
+					//get the account
+					ac = this.al.getAccountAtIndex(acNo);
+					//the amount to be withdrawn
+					value = (Integer)t.getPrimaryAux();
+					//if the withdraw is successfull report
+					if(ac.withDraw(value)){
+						Statistics.TOTALS_WITHDRAW += value;
+					}
+					Statistics.ACCOUNT_WITHDRAW++;
+
+					message +="\n*** End of Transaction ***\n\n";
+				}catch(NonExistantAccountException e){
+					message += "Sorry that account doesn't exist";
 				}
-				message +="\n*** End of Transaction ***\n\n";
 				break;
 			case DEPOSIT:
-				Statistics.ACCOUNT_DEPOSIT++;
 				message += "*** Processing deposit Transaction***\n\n";
-				
 				acNo = (Integer)t.getSecondaryAux();
 				message +="Customer: " + cust.getFullName() + " No: " + q.getCustNo() + "Acc:" + acNo;
-				ac = this.al.getAccountAtIndex(acNo);
-				value = (Integer)t.getPrimaryAux();
-				ac.deposit(value);
-				Statistics.TOTALS_DEPOSTIT += value;
+				try{
+					Statistics.ACCOUNT_DEPOSIT++;
+					ac = this.al.getAccountAtIndex(acNo);
+					value = (Integer)t.getPrimaryAux();
+					ac.deposit(value);
+					Statistics.TOTALS_DEPOSTIT += value;
+				}catch(NonExistantAccountException e){
+					message += "Sorry that account doesn't exist";
+				}
 				message += "\n*** End of Transaction ***\n\n";
 				break;
 			case OPEN:
@@ -71,19 +80,27 @@ public class Teller {
 				message += "\n*** End of Transaction ***\n";
 				break;
 			case CLOSE:
+				//update statistics
 				Statistics.ACCOUNTS_CLOSED++;
+				//some boring log stuff
 				message += "\n*** Processing close Transaction ***\n";
 				message += "Customer = "+ cust.getFullName();
 				message += "PrimaryAux = " + (Integer)t.getPrimaryAux();
-				message += (Integer)t.getPrimaryAux();
-				acNo = (Integer)t.getPrimaryAux();
-				cust.removeAccount(acNo);
-				
+				//get the id of the account (0 or 1)
+				int acId = (Integer)t.getPrimaryAux();
+				//get the associated account number
+				acNo = cust.getAccountNo(acId);
+				//remove from account list and customers accounts
+				al.removeAccountNo(acNo);
+				cust.removeAccount(acId);
+				//message
 				message += "\n*** End of Transaction ***\n";
 				break;
 			}
+			//write the message
 			Log.writeMessage(message);
 		}
+		//another customer served
 		Statistics.CUSTOMERS_SERVED++;
 		
 	}

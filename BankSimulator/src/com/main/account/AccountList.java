@@ -2,6 +2,8 @@ package com.main.account;
 
 import java.util.ArrayList;
 
+import com.uni.Exceptions.NonExistantAccountException;
+
 
 public class AccountList extends ArrayList<Account>{
 
@@ -25,13 +27,24 @@ public class AccountList extends ArrayList<Account>{
 		return retV;
 	}
 	
-	public Account getAccountAtIndex(int index){
+	public Account getAccountAtIndex(int index) throws NonExistantAccountException{
 		for(Account a: this){
 			if(a.getId() == index){
 				return a;
 			}
 		}
-		return null;
+		throw new NonExistantAccountException();
+	}
+	
+	public boolean removeAccountNo(int acNo){
+		for(Account a: this){
+			if(a.getId() == acNo){
+				this.remove(a);
+				System.out.println("Removing" + a.getId());
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	//void editAccount ???
