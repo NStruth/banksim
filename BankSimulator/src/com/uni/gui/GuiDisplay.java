@@ -2,6 +2,7 @@ package com.uni.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.FontMetrics;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,7 +27,8 @@ public class GuiDisplay extends JFrame{
 		this.setBounds(50, 50, 400, 400);
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
-		initComponents();
+				initComponents();
+	
 	}
 	
 	private void initComponents(){
@@ -35,9 +37,15 @@ public class GuiDisplay extends JFrame{
 		jp.setLayout(layout);
 		
 		Font f = this.getFont();
+		//while we have the font
+		FontMetrics fM = this.getFontMetrics(f);
+		this.westText = fM.stringWidth("  Accounts Opened:   ");
+		
 		f = f.deriveFont(new Float(20));
 		JLabel header = new JLabel("Royal Bank of Jon");
 		header.setFont(f);
+		
+		
 		
 		jp.add(header);
 		
