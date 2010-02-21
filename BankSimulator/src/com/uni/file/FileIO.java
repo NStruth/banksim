@@ -25,11 +25,14 @@ public class FileIO {
 	{
 		try
 		{
-			File file = new File(afilename);
-			Scanner scanner = new Scanner(file);
+			File file = new File(afilename); //REMOVE
+			Scanner scanner = new Scanner(file); //REMOVE
+			/*InputStream in = getClass().getResourceAsStream
+			  (afilename);
+			  Scanner scanner = new Scanner(in);*/
 			AccountList list = new AccountList();
 			
-			scanner.useDelimiter("\r\n");
+			scanner.useDelimiter("\r\n");//look into
 			while(scanner.hasNext())
 			{
 				list.add(parseAccountLine(scanner.next()));
@@ -38,6 +41,7 @@ public class FileIO {
 			return list;
 		}
 		catch(FileNotFoundException e){return null;}
+		//catch(Exception e){return null;}
 	}
 	
 	private Account parseAccountLine(String line)
@@ -56,8 +60,11 @@ public class FileIO {
 	public CustomerList readCustomerLines()
 	{
 		try{
-			File file = new File(cfilename);
-			Scanner scanner = new Scanner(file);
+			File file = new File(cfilename);//REMOVE
+			Scanner scanner = new Scanner(file);//REMOVE
+			/*InputStream in = getClass().getResourceAsStream
+			  (cfilename);
+			  Scanner scanner = new Scanner(in);*/
 			CustomerList cList = new CustomerList();
 			scanner.useDelimiter("\n");
 			while(scanner.hasNext())
@@ -67,6 +74,7 @@ public class FileIO {
 			return cList;
 		}
 		catch(FileNotFoundException e){return null;}
+		//catch(Exception e) {return null;}
 	}
 			
 	private Customer parseCustomerLine(String line){
