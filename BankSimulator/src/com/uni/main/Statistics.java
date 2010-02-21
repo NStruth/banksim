@@ -23,7 +23,7 @@ public class Statistics {
 			rem = "" + remainder;
 		}
 		
-		return "Â£" + div + "." + rem;
+		return "£" + div + "." + rem;
 	}
 	
 }
