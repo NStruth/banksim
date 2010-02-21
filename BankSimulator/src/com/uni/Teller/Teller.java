@@ -69,8 +69,8 @@ public class Teller {
 				message += Language.OPEN_START;
 				Account acc = new Account();
 				al.add(acc);
-				cust.addAccount(acc);
-				message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getId()+"");
+				cust.addAccount(acc.getAccountNumber());
+				message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
 				message += Language.TRANSACTION_END;
 				break;
 			case CLOSE:

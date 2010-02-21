@@ -8,7 +8,7 @@ import com.uni.Exceptions.NonExistantAccountException;
 public class AccountList extends ArrayList<Account>{
 
 	public void openAccount(Account ac){
-		this.add(ac.getId(), ac);
+		this.add(ac.getAccountNumber(), ac);
 	}
 	
 	public void closeAccountAt(int index){
@@ -29,7 +29,7 @@ public class AccountList extends ArrayList<Account>{
 	
 	public Account getAccountAtIndex(int index) throws NonExistantAccountException{
 		for(Account a: this){
-			if(a.getId() == index){	
+			if(a.getAccountNumber() == index){	
 				return a;
 			}
 		}
@@ -38,9 +38,9 @@ public class AccountList extends ArrayList<Account>{
 	
 	public boolean removeAccountNo(int acNo){
 		for(Account a: this){
-			if(a.getId() == acNo){
+			if(a.getAccountNumber() == acNo){
 				this.remove(a);
-				System.out.println("Removing" + a.getId());
+				System.out.println("Removing" + a.getAccountNumber());
 				return true;
 			}
 		}

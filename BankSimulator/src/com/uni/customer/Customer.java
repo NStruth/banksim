@@ -1,3 +1,13 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * A class that represents a customer at the bank.
+ * A customer has a first name, a last name, an address
+ *  and a list of accounts. A customer may have at most 2 accounts.
+ */
 package com.uni.customer;
 
 import java.util.ArrayList;
@@ -5,17 +15,24 @@ import java.util.ArrayList;
 import com.uni.Logging.Log;
 import com.uni.account.Account;
 
+
 public class Customer {
 
-	String fName, lName;
-	String address;
-	ArrayList<Integer> accList;
+	private String fName, lName;
+	private String address;
+	private ArrayList<Integer> accList;
 	
 	//Status indicates whether customer is in the queue or not
 	//0 = not 1 = in queue
 	//initially a customer is not in the queue
 	private int status = 0;
-		
+	
+	
+	/**
+	 * @param fName the customers first name
+	 * @param lName the customers last name
+	 * @param address the customers address
+	 */
 	public Customer(String fName, String lName, String address){
 		this.fName = fName;
 		this.lName = lName;
@@ -23,9 +40,13 @@ public class Customer {
 		this.accList = new ArrayList<Integer>();
 	}
 	
-	/*
+
+	/**
 	 * Add an account only if the use does not
 	 * already have 2 accounts. Redundant check.
+	 * 
+	 * @param c the accound number to add
+	 * @return true if it can be added
 	 */
 	public boolean addAccount(int c){
 		if(this.accList.size() == 2){
@@ -35,41 +56,64 @@ public class Customer {
 		}
 	}
 	
-	public int getStatus()
-	{
+	/**
+	 * Get the customer queue status
+	 * 
+	 * @return the queue status
+	 */
+	public int getStatus(){
 		return this.status;
 	}
-	
-	public void setStatus(int s)
-	{
+	/**
+	 * Set the queue status
+	 * @param s the new status
+	 */
+	public void setStatus(int s){
 		this.status = s;
 	}
-	
+	/**
+	 * Get the customers full name
+	 * @return the customers full name
+	 */
 	public String getFullName(){
 		return fName + " " + lName;
 	}
-	
+	/**
+	 * Get the number of accounts
+	 * @return the number of accounts
+	 */
 	public int getNumOfAccounts(){
 		return this.accList.size();
 	}
-	
+	/**
+	 * Get the account number at a particular index
+	 * @param acId the index of the account
+	 * @return the account number
+	 */
 	public int getAccountNo(int acId){
 		int acNo = accList.get(acId);
 		return acNo;
 	}
-	
+	//TODO Ask neil
+	/**
+	 * Add an account to the customers account list
+	 * @param ac
+	 
 	public void addAccount(Account ac)
 	{
 		if(this.getNumOfAccounts() < 2)
 		{
-			this.accList.add(ac.getId());
+			this.accList.add(ac.getAccountNumber());
 		}
-	}
+	}*/
 	
-	public void removeAccount(int id)
-	{
-		if(this.getNumOfAccounts() >= id)
-		{
+	/**
+	 * Remove an account at an id
+	 * @param id the index of the account
+	 */
+	public void removeAccount(int id){
+		if(this.getNumOfAccounts() >= id){
+			//TODO move this log message
 			Log.writeMessage("AccountNo : " + this.getAccountNo(id) + " removed\n");
 			this.accList.remove(id);	
 		}
@@ -77,7 +121,9 @@ public class Customer {
 			Log.writeMessage("Invalid ID");
 		
 	}
-	
+	/**
+	 * To string method for this class.
+	 */
 	public String toString()
 	{
 		return this.fName + " " + this.lName + " " + this.address;

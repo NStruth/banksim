@@ -1,19 +1,31 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * A class to manage accounts.  
+ * Each account has a unique identifier and a balance.
+ * Users can withdraw and deposit money. Overdrafts
+ * are not allowed.
+ */
 package com.uni.account;
 
 import com.uni.Logging.Log;
 
-//Account object for staring the balance of the customers accounts
 public class Account {
 
+	//the master account number
 	public static int masterNumber = 60000;
-	private int id;
+	
+	private int accountNumber; //individual identifier
 	private int balance; //in pence
 		
 	//New accounts are given an unique id starting at 60000
 	public Account(int balance, int id){
 		Log.writeMessage("Creating account : "+id);
 		this.balance = balance;
-		this.id = id;
+		this.accountNumber = id;
 		masterNumber++;
 	}
 	
@@ -23,7 +35,7 @@ public class Account {
 	{
 		this.balance = 10000;
 		masterNumber++;
-		this.id = masterNumber;
+		this.accountNumber = masterNumber;
 	}
 	
 	
@@ -49,8 +61,8 @@ public class Account {
 		return this.balance;
 	}
 	
-	public int getId(){
-		return id;
+	public int getAccountNumber(){
+		return accountNumber;
 	}
 	
 
