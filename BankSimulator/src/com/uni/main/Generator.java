@@ -35,11 +35,22 @@ public class Generator {
 		if(c.getStatus() == 0)
 		{
 			c.setStatus(1);
-			//generate between 1 and 3 transactions - inclusive
-			int numTrans = rGen.nextInt(3);
-			TransactionList tList = new TransactionList();
-				
 			
+			//1,2,3 transactions with weighted selection
+			int numTransWeighted = rGen.nextInt(10);
+			//make a list to store the transactions
+			TransactionList tList = new TransactionList();
+			//generate between 1 and 3 transactions - inclusive
+			int numTrans;
+			if(numTransWeighted >= 0 &&  numTransWeighted < 5){
+				numTrans = 0;
+			}else if(numTransWeighted >= 5 && numTransWeighted < 8){
+				numTrans = 1;
+			}else{
+				numTrans = 3;
+			}
+			
+			//generate each transaction
 			for(int i=0; i<= numTrans; i++){
 				//if they are closing there only account they wont want a new one
 				if(tList.containsClose() && c.getNumOfAccounts() == 1){
