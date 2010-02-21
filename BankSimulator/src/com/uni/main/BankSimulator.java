@@ -1,8 +1,8 @@
 package com.uni.main;
 
-import com.main.account.AccountList;
 import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
+import com.uni.account.AccountList;
 import com.uni.customer.CustomerList;
 import com.uni.file.FileIO;
 import com.uni.gui.GuiDisplay;

@@ -14,7 +14,7 @@ public class Statistics {
 	public static String toPoundsAndPence(int value){
 		
 		int div = value/100;
-		char pound = '�';
+		//char pound = "\£";
 		
 		int remainder = value -(div * 100);
 		String rem = "";
@@ -24,7 +24,7 @@ public class Statistics {
 			rem = "" + remainder;
 		}
 		
-		return pound + div + "." + rem;
+		return "£" + div + "." + rem;
 	}
 	
 }

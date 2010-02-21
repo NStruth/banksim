@@ -1,7 +1,7 @@
 package com.uni.queue;
 
-import com.main.account.Transaction;
-import com.main.account.TransactionList;
+import com.uni.account.Transaction;
+import com.uni.account.TransactionList;
 import com.uni.customer.Customer;
 
 public class QueueItem {

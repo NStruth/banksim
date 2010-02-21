@@ -1,12 +1,12 @@
 package com.uni.Teller;
 
-import com.main.account.Account;
-import com.main.account.AccountList;
-import com.main.account.Transaction;
-import com.main.account.TransactionList;
 import com.uni.Exceptions.NonExistantAccountException;
 import com.uni.Logging.Language;
 import com.uni.Logging.Log;
+import com.uni.account.Account;
+import com.uni.account.AccountList;
+import com.uni.account.Transaction;
+import com.uni.account.TransactionList;
 import com.uni.customer.Customer;
 import com.uni.main.Statistics;
 import com.uni.queue.QueueItem;

@@ -4,8 +4,8 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import com.main.account.Account;
-import com.main.account.AccountList;
+import com.uni.account.Account;
+import com.uni.account.AccountList;
 import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
 

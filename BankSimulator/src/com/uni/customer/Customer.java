@@ -2,8 +2,8 @@ package com.uni.customer;
 
 import java.util.ArrayList;
 
-import com.main.account.Account;
 import com.uni.Logging.Log;
+import com.uni.account.Account;
 
 public class Customer {
 
