@@ -25,8 +25,7 @@ public class Generator {
 		this.clist = clist;
 		this.aList = alist;
 	}
-	
-	
+		
 	private QueueItem generateItem()
 	{
 		Random rGen = new Random();
@@ -138,6 +137,13 @@ public class Generator {
 		
 	}
 	
+
+	/**
+	 * 
+	 * @param c the customer 
+	 * @param acc the account number
+	 * @return the amount to be withdrawn
+	 */
 	private int getWithdrawAmount(Customer c, int acc)
 	{
 		try{
@@ -145,16 +151,12 @@ public class Generator {
 			a.toString();
 			Random rGen = new Random();
 		
-			if(a.getBalance() < 20000)
-			{
+			if(a.getBalance() < 20000){
 				int amount = rGen.nextInt(20000);
-				//System.out.println("Amount:" + amount);	
 				return amount;
 			}
-			else
-			{
+			else{
 				int amount = rGen.nextInt(20001);
-				//System.out.println("amount:" + amount);
 				return amount;
 			}
 		}catch(NonExistantAccountException e){
