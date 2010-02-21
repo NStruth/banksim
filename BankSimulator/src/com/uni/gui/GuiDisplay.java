@@ -37,10 +37,12 @@ public class GuiDisplay extends JFrame{
 		jp.setLayout(layout);
 		
 		Font f = this.getFont();
-		//while we have the font
-		FontMetrics fM = this.getFontMetrics(f);
-		this.westText = fM.stringWidth("  Accounts Opened:   ");
 		
+		//while we have the font set the padding
+		FontMetrics fM = this.getFontMetrics(f);
+		this.westText = fM.stringWidth("  Accounts Opened:     ");
+		
+		//biiiig font for heading
 		f = f.deriveFont(new Float(20));
 		JLabel header = new JLabel("Royal Bank of Jon");
 		header.setFont(f);
