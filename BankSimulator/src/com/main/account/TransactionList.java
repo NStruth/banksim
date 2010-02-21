@@ -14,13 +14,26 @@ public class TransactionList extends ArrayList<Transaction> {
 	}
 	
 	
-	//not to be used then
 	public boolean containsClose(){
 		for(Transaction t: this){
 			if(t.getChoice() == Transaction.Choices.CLOSE)
 				return true;
 		}
 		return false;
+	}
+
+	public boolean containsMultipleClose(){
+		int counter = 0;
+		for(Transaction t: this){
+			if(t.getChoice() == Transaction.Choices.CLOSE){
+				counter++;
+			}
+		}
+		if(counter > 1){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	

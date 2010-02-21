@@ -41,30 +41,39 @@ public class Generator {
 				
 			
 			for(int i=0; i<= numTrans; i++){
-				if(!tList.containsClose())
-					tList.add(getTransaction(c));
+				//if they are closing there only account they wont want a new one
+				if(tList.containsClose() && c.getNumOfAccounts() == 1){
+					break;
+				//if they are closing all there accounts the are leaving
+				}else if(tList.containsMultipleClose()){
+					break;
+				//if they are closing 1 account but have 2 then treat transaction as single account
+				}else if(tList.containsClose() && c.getNumOfAccounts() == 2){
+					tList.add(getTransaction(c, -1));
+				//otherwise get the transaction
+				}else{
+					tList.add(getTransaction(c,0));		
+				}
 			}
 			
 			QueueItem q = new QueueItem(c, tList);
 			return q;
-		}
-		else
-		{
-			//what if we get here and every one is 
-			//in the queue neil ? 
+			
+		}else{
 			QueueItem q = generateItem();
 			return q;
 		}
 		
 	}
-	
-	private Transaction getTransaction(Customer c)
+		
+	private Transaction getTransaction(Customer c, int accountOffset)
 	{
 		Random rGen = new Random();
 		int cWeight, oWeight, dWeight = 0;
 		int totalWeight = 100;
 		int tType = rGen.nextInt(100) + 1;
-		switch(c.getNumOfAccounts())
+		int accounts = c.getNumOfAccounts() + accountOffset;
+		switch(accounts)
 		{
 			case 0:
 			{
