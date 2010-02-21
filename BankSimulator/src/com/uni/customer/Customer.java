@@ -63,7 +63,6 @@ public class Customer {
 		if(this.getNumOfAccounts() < 2)
 		{
 			this.accList.add(ac.getId());
-			Log.writeMessage("Account Number: "+ ac.getId() + " added to customer : " + this.getFullName());
 		}
 	}
 	

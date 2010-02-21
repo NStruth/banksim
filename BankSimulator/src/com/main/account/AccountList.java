@@ -29,7 +29,7 @@ public class AccountList extends ArrayList<Account>{
 	
 	public Account getAccountAtIndex(int index) throws NonExistantAccountException{
 		for(Account a: this){
-			if(a.getId() == index){
+			if(a.getId() == index){	
 				return a;
 			}
 		}

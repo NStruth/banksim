@@ -29,18 +29,15 @@ public class Account {
 	
 	public boolean withDraw(int value){
 		if(value > this.balance){
-			Log.writeMessage("Insufficient Funds");
 			return false;
 		}else{
 			this.balance = this.balance - value;
-			Log.writeMessage("Withdraw: " + value + " New Balance: " + this.balance);
 			return true;
 		}
 	}
 	
 	public void deposit(double value){
 		this.balance += value;
-		Log.writeMessage("Deposit: " + value + " New Balance: " + this.balance);
 	}
 	
 	public void displayBalance(){
@@ -56,21 +53,6 @@ public class Account {
 		return id;
 	}
 	
-	//Adds a zero if the balance has a trailing zero
-	// e.g. balance 150.2 becomes 150.20
-	public String toString(){
-		String strBalance = Double.toString(this.balance);
-		
-		int indexOfDecPlace = strBalance.lastIndexOf(".");
-		String afterDecPlace = strBalance.substring(indexOfDecPlace);
-		if(afterDecPlace.length() <= 2)
-		{
-			return this.id + " " + this.balance + "0";
-		}
-		else
-		{
-			return this.id + " " + this.balance;
-		}
-	}
+
 	
 }

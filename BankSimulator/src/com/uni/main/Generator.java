@@ -46,7 +46,7 @@ public class Generator {
 			}else if(numTransWeighted >= 5 && numTransWeighted < 8){
 				numTrans = 1;
 			}else{
-				numTrans = 3;
+				numTrans = 2;
 			}
 			
 			//generate each transaction
@@ -65,15 +65,12 @@ public class Generator {
 					tList.add(getTransaction(c,0));		
 				}
 			}
-			
 			QueueItem q = new QueueItem(c, tList);
-			return q;
-			
+			return q;	
 		}else{
 			QueueItem q = generateItem();
 			return q;
 		}
-		
 	}
 		
 	private Transaction getTransaction(Customer c, int accountOffset)

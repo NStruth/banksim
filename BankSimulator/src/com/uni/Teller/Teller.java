@@ -5,6 +5,7 @@ import com.main.account.AccountList;
 import com.main.account.Transaction;
 import com.main.account.TransactionList;
 import com.uni.Exceptions.NonExistantAccountException;
+import com.uni.Logging.Language;
 import com.uni.Logging.Log;
 import com.uni.customer.Customer;
 import com.uni.main.Statistics;
@@ -37,64 +38,65 @@ public class Teller {
 			switch(t.getChoice()){
 			case WITHDRAW:
 				acNo = (Integer)t.getSecondaryAux();
+				
 				//some message stuff
-				message += "*** Processing withdraw transaction ***\n";
-				message +="Customer: " + cust.getFullName() + " No: " + q.getCustNo() + "Acc:" + acNo;
-				try{
-					//get the account
-					ac = this.al.getAccountAtIndex(acNo);
-					//the amount to be withdrawn
-					value = (Integer)t.getPrimaryAux();
-					//if the withdraw is successfull report
-					if(ac.withDraw(value)){
-						Statistics.TOTALS_WITHDRAW += value;
-					}
-					Statistics.ACCOUNT_WITHDRAW++;
-
-					message +="\n*** End of Transaction ***\n\n";
-				}catch(NonExistantAccountException e){
-					message += "Sorry that account doesn't exist";
-				}
+				message += Language.WITHDRAW_START;
+				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
+				value = (Integer)t.getPrimaryAux();
+				
+				//int acNumber = cust.getAccountNo(acNo);
+				message += doWithdraw(acNo, value);
+				message += Language.TRANSACTION_END;
 				break;
 			case DEPOSIT:
-				message += "*** Processing deposit Transaction***\n\n";
+				message += Language.DEPOSIT_START;
 				acNo = (Integer)t.getSecondaryAux();
-				message +="Customer: " + cust.getFullName() + " No: " + q.getCustNo() + "Acc:" + acNo;
+				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
 				try{
 					Statistics.ACCOUNT_DEPOSIT++;
 					ac = this.al.getAccountAtIndex(acNo);
 					value = (Integer)t.getPrimaryAux();
 					ac.deposit(value);
 					Statistics.TOTALS_DEPOSTIT += value;
+					message += "Deposit: " + value + " New Balance: " + ac.getBalance();
 				}catch(NonExistantAccountException e){
-					message += "Sorry that account doesn't exist";
+					message += Language.ERROR_NONEXISTANT_ACCOUNT;
 				}
-				message += "\n*** End of Transaction ***\n\n";
+				message += Language.TRANSACTION_END;
 				break;
 			case OPEN:
 				Statistics.ACCOUNTS_OPENED++;
-				message +="\n*** Processing open Transaction ***\n";
+				message += Language.OPEN_START;
 				Account acc = new Account();
 				al.add(acc);
 				cust.addAccount(acc);
-				message += "\n*** End of Transaction ***\n";
+				message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getId()+"");
+				message += Language.TRANSACTION_END;
 				break;
 			case CLOSE:
 				//update statistics
 				Statistics.ACCOUNTS_CLOSED++;
 				//some boring log stuff
-				message += "\n*** Processing close Transaction ***\n";
-				message += "Customer = "+ cust.getFullName();
-				message += "PrimaryAux = " + (Integer)t.getPrimaryAux();
+				message += Language.CLOSE_START;
 				//get the id of the account (0 or 1)
 				int acId = (Integer)t.getPrimaryAux();
 				//get the associated account number
 				acNo = cust.getAccountNo(acId);
+				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
 				//remove from account list and customers accounts
-				al.removeAccountNo(acNo);
-				cust.removeAccount(acId);
+				message += "\t" + Language.WITHDRAW_START;
+				try{
+					int bal = al.getAccountAtIndex(acNo).getBalance();
+					message += doWithdraw(acNo, bal);	
+					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
+					al.removeAccountNo(acNo);
+					cust.removeAccount(acId);
+				}catch(NonExistantAccountException e){
+					message += Language.ERROR_NONEXISTANT_ACCOUNT;
+				}
+				message += "\t" + Language.TRANSACTION_END;
 				//message
-				message += "\n*** End of Transaction ***\n";
+				message += Language.TRANSACTION_END;
 				break;
 			}
 			//write the message
@@ -103,5 +105,28 @@ public class Teller {
 		//another customer served
 		Statistics.CUSTOMERS_SERVED++;
 		
+	}
+	
+	private String doWithdraw(int acNo, int value){
+		Account ac;
+		String message;
+		try{
+			//get the account
+			ac = this.al.getAccountAtIndex(acNo);
+			//the amount to be withdrawn
+			//if the withdraw is successfull report
+			if(ac.withDraw(value)){
+				Statistics.TOTALS_WITHDRAW += value;
+				message = Language.WithdrawInfo(value, ac.getBalance());
+			}else{
+				message = Language.ERROR_INSUFFICIENT_FUNDS;
+
+			}
+			Statistics.ACCOUNT_WITHDRAW++;
+			
+		}catch(NonExistantAccountException e){
+			return Language.ERROR_NONEXISTANT_ACCOUNT;
+		}
+		return message;
 	}
 }
