@@ -58,7 +58,7 @@ public class Teller {
 					value = (Integer)t.getPrimaryAux();
 					ac.deposit(value);
 					Statistics.TOTALS_DEPOSTIT += value;
-					message += "Deposit: " + value + " New Balance: " + ac.getBalance();
+					message += Language.DepositInfo(value, ac.getBalance());
 				}catch(NonExistantAccountException e){
 					message += Language.ERROR_NONEXISTANT_ACCOUNT;
 				}
