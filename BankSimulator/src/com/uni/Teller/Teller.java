@@ -46,7 +46,7 @@ public class Teller {
 				
 				//int acNumber = cust.getAccountNo(acNo);
 				message += doWithdraw(acNo, value);
-				message += Language.TRANSACTION_END;
+				message += Language.WITHDRAW_END;
 				break;
 			case DEPOSIT:
 				message += Language.DEPOSIT_START;
@@ -62,16 +62,22 @@ public class Teller {
 				}catch(NonExistantAccountException e){
 					message += Language.ERROR_NONEXISTANT_ACCOUNT;
 				}
-				message += Language.TRANSACTION_END;
+				message += Language.DEPOSIT_END;
 				break;
 			case OPEN:
 				Statistics.ACCOUNTS_OPENED++;
 				message += Language.OPEN_START;
 				Account acc = new Account();
 				al.add(acc);
+				if(cust.getNumOfAccounts() >= 2)
+				{
+					message += Language.ERROR_TOO_MANY_ACCOUNTS;
+					message += Language.OPEN_END;
+					break;
+				}
 				cust.addAccount(acc.getAccountNumber());
 				message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
-				message += Language.TRANSACTION_END;
+				message += Language.OPEN_END;
 				break;
 			case CLOSE:
 				//update statistics
@@ -80,6 +86,12 @@ public class Teller {
 				message += Language.CLOSE_START;
 				//get the id of the account (0 or 1)
 				int acId = (Integer)t.getPrimaryAux();
+				if(cust.getNumOfAccounts() == 0)
+				{
+					message += Language.ERROR_NO_ACCOUNTS_HELD;
+					message += Language.CLOSE_END;
+					break;
+				}
 				//get the associated account number
 				acNo = cust.getAccountNo(acId);
 				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
@@ -94,9 +106,9 @@ public class Teller {
 				}catch(NonExistantAccountException e){
 					message += Language.ERROR_NONEXISTANT_ACCOUNT;
 				}
-				message += "\t" + Language.TRANSACTION_END;
+				message += "\t" + Language.WITHDRAW_END;
 				//message
-				message += Language.TRANSACTION_END;
+				message += Language.CLOSE_END;
 				break;
 			}
 			//write the message

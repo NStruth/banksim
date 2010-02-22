@@ -51,7 +51,7 @@ public class GuiDisplay extends JFrame{
 		
 		jp.add(header);
 		
-		//addPair("Royal Bank of Jon", "", 90);
+		//addPair("Royal Bank of Neil", "", 90);
 		
 		addPair("Customers Served:",Statistics.CUSTOMERS_SERVED,0);
 		addPair("Accounts Opened:",Statistics.ACCOUNTS_OPENED,20);
