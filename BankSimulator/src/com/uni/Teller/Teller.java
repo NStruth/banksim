@@ -100,9 +100,13 @@ public class Teller {
 				try{
 					int bal = al.getAccountAtIndex(acNo).getBalance();
 					message += doWithdraw(acNo, bal);	
-					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
-					al.removeAccountNo(acNo);
-					cust.removeAccount(acId);
+					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");	
+					if(cust.removeAccount(acId)){
+						al.removeAccountNo(acNo);
+						message += "Successfully removed";
+					}else{
+						message += "Error removing from customer";
+					}
 				}catch(NonExistantAccountException e){
 					message += Language.ERROR_NONEXISTANT_ACCOUNT;
 				}

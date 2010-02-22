@@ -3,7 +3,10 @@ package com.uni.gui;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.FontMetrics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,7 +14,7 @@ import javax.swing.SpringLayout;
 
 import com.uni.main.Statistics;
 
-public class GuiDisplay extends JFrame{
+public class GuiDisplay extends JFrame implements ActionListener{
 
 	SpringLayout layout;
 	JPanel jp;
@@ -48,7 +51,6 @@ public class GuiDisplay extends JFrame{
 		header.setFont(f);
 		
 		
-		
 		jp.add(header);
 		
 		//addPair("Royal Bank of Neil", "", 90);
@@ -61,8 +63,12 @@ public class GuiDisplay extends JFrame{
 		addPair("Account Withdraw:", Statistics.ACCOUNT_WITHDRAW,20);
 		addPair("Total:", Statistics.toPoundsAndPence(Statistics.TOTALS_WITHDRAW),40);
 		
-
-        
+		JButton logButton = new JButton("Click to view log");
+		logButton.addActionListener(this);
+		jp.add(logButton);
+		layout.putConstraint(SpringLayout.WEST, logButton,westLabel,SpringLayout.WEST, jp);
+	    layout.putConstraint(SpringLayout.NORTH, logButton,north,SpringLayout.NORTH, jp);
+	    
         super.add(jp);
 	}
 	
@@ -98,6 +104,13 @@ public class GuiDisplay extends JFrame{
         
         north += padding;
         
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		LogViewer lv = new LogViewer();
+		
+		
 	}
 	
 }

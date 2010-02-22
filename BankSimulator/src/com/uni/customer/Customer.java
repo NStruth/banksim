@@ -111,14 +111,13 @@ public class Customer {
 	 * Remove an account at an id
 	 * @param id the index of the account
 	 */
-	public void removeAccount(int id){
+	public boolean removeAccount(int id){
 		if(this.getNumOfAccounts() >= id){
-			//TODO move this log message
-			Log.writeMessage("AccountNo : " + this.getAccountNo(id) + " removed\n");
 			this.accList.remove(id);	
+			return true;
 		}
 		else
-			Log.writeMessage("Invalid ID");
+			return false;
 		
 	}
 	/**
