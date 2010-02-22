@@ -12,6 +12,7 @@
 package com.uni.account;
 
 import com.uni.Logging.Log;
+import com.uni.main.Statistics;
 
 public class Account {
 
@@ -63,6 +64,11 @@ public class Account {
 	
 	public int getAccountNumber(){
 		return accountNumber;
+	}
+	
+	public String toString()
+	{
+		return this.accountNumber + " : " + Statistics.toPoundsAndPence(getBalance());
 	}
 	
 
