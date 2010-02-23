@@ -57,4 +57,6 @@ public class TransactionList extends ArrayList<Transaction> {
 			return false;
 		}
 	}
+	
+
 }

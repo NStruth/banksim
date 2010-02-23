@@ -89,4 +89,16 @@ public class Transaction {
 	public Object getSecondaryAux() {
 		return secondaryAux;
 	}
+	
+	public String toString(){
+		String retV = choice.toString();
+		if(primaryAux != null){
+			retV += primaryAux.toString();
+		}
+		
+		if(secondaryAux != null){
+			retV += secondaryAux.toString();
+		}
+		return retV;
+	}
 }

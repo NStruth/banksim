@@ -54,4 +54,12 @@ public class QueueItem {
 	public int getCustNo(){
 		return this.custId;
 	}
+	
+	public String toString(){
+		String v = "";
+		for(Transaction t: this.tList){
+			v+= t.toString() + "\n";
+		}
+		return this.c.getFullName() + "\n" + v;
+	}
 }
