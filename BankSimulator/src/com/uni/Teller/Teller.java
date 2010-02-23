@@ -1,3 +1,14 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * This is the class to control the teller.
+ * The teller can fetch the queue item from the head of the queue and
+ * process the transactions.
+ * 
+ */
 package com.uni.Teller;
 
 import com.uni.Exceptions.NonExistantAccountException;
@@ -13,35 +24,50 @@ import com.uni.queue.QueueItem;
 
 public class Teller {
 	
-	AccountList al;
+	//list of accounts so the teller has access
+	private AccountList al;
 
+	/**
+	 * Constructor for the teller.
+	 * @param al the list of accounts
+	 */
 	public Teller(AccountList al){
 		this.al = al;
 	}
 	
+	/**
+	 * Process a queue item.
+	 * For each transaction perform the required task
+	 * @param q the queue item
+	 */
 	public void processQueueItem(QueueItem q){
 		
+		//get the transactions from the queue item
 		TransactionList tList = q.getTransactions();
-		
-		Transaction ta = q.getTransaction();
+		//get the customer from the queue item
 		Customer cust = q.getCustomer();
-				
 		
+		//process each transaction
 		for(Transaction t: tList){
+			//form a message to write to the log
 			
 			String message = "";
+			
 			int acNo;
 			Account ac;
-			int value; //can't cast object to int
+			int value; 
 
 
 			switch(t.getChoice()){
 			case WITHDRAW:
+				//the account number will be the secondary aux value
 				acNo = (Integer)t.getSecondaryAux();
 				
 				//some message stuff
 				message += Language.WITHDRAW_START;
 				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
+				
+				//the withdraw value will be the primary aux
 				value = (Integer)t.getPrimaryAux();
 				
 				//int acNumber = cust.getAccountNo(acNo);
@@ -50,25 +76,27 @@ public class Teller {
 				break;
 			case DEPOSIT:
 				message += Language.DEPOSIT_START;
+				//account number is secondary aux
 				acNo = (Integer)t.getSecondaryAux();
 				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
 				try{
-					Statistics.ACCOUNT_DEPOSIT++;
-					ac = this.al.getAccountAtIndex(acNo);
-					value = (Integer)t.getPrimaryAux();
-					ac.deposit(value);
-					Statistics.TOTALS_DEPOSTIT += value;
-					message += Language.DepositInfo(value, ac.getBalance());
+					Statistics.ACCOUNT_DEPOSIT++; //update stats
+					ac = this.al.getAccountAtIndex(acNo); //get the account
+					value = (Integer)t.getPrimaryAux(); //get the value
+					ac.deposit(value); //deposit the value
+					Statistics.TOTALS_DEPOSTIT += value; //update stats
+					message += Language.DepositInfo(value, ac.getBalance()); 
 				}catch(NonExistantAccountException e){
 					message += Language.ERROR_NONEXISTANT_ACCOUNT;
 				}
 				message += Language.DEPOSIT_END;
 				break;
 			case OPEN:
-				Statistics.ACCOUNTS_OPENED++;
+				Statistics.ACCOUNTS_OPENED++; //udate stats
 				message += Language.OPEN_START;
-				Account acc = new Account();
-				al.add(acc);
+				Account acc = new Account(); //create the account
+				al.add(acc); //add the account
+				//try associate account with customer
 				if(cust.getNumOfAccounts() >= 2)
 				{
 					message += Language.ERROR_TOO_MANY_ACCOUNTS;
@@ -84,7 +112,7 @@ public class Teller {
 				Statistics.ACCOUNTS_CLOSED++;
 				//some boring log stuff
 				message += Language.CLOSE_START;
-				//get the id of the account (0 or 1)
+				//get the id of the account (0 or 1; from customer)
 				int acId = (Integer)t.getPrimaryAux();
 				if(cust.getNumOfAccounts() == 0)
 				{

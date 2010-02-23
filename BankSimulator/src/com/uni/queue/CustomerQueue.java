@@ -1,16 +1,21 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * A customer queue represents a list of customers in the queue
+ * at the bank, each with one or more transactions.
+ */
+
 package com.uni.queue;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class CustomerQueue extends ArrayList<QueueItem>{
-
-	//We need a queue number. Thing with array list is if you remove
-	//1 then all the accounts get shifted left e.g. 1 becomes 0.
-	//instead of super.add(QueueItem) we should do super.add(key, QueueItem)
-	//where "key" is the customer number. yoooo
-	private int lastCustomerID = 0;
-	
+	/**
+	 * Constructor for the customer queue
+	 */
 	public CustomerQueue(){
 		super();
 	}
@@ -28,19 +33,18 @@ public class CustomerQueue extends ArrayList<QueueItem>{
 		}
 		return retV;
 	}
-	
+	/**
+	 * get the first queue item in the list
+	 * @return the first queue item
+	 * 
+	 * @throws Exception if no one in the queue
+	 */
 	public QueueItem getFirst() throws Exception{
 		
 		if(!this.isEmpty()){
 			QueueItem q = this.remove(0);
 			return q;
 		}
-		
 		throw new Exception();
-	}
-
-
-
-
-	
+	}	
 }
