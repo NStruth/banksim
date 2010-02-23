@@ -1,3 +1,14 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * This is a language class to allow easy modification of the words
+ * used in the log file.
+ * 
+ * Contains some static methods for money formatting
+ */
 package com.uni.Logging;
 
 import com.uni.main.Statistics;
@@ -21,14 +32,31 @@ public class Language {
 	public static String ERROR_NO_ACCOUNTS_HELD = "No Accounts Held";
 	public static String ERROR_TOO_MANY_ACCOUNTS = "Maximum Number of Accounts is 2";
 	
+	/**
+	 * Static method to get customer info as a string
+	 * @param name the customers name
+	 * @param custNo the customer queue number
+	 * @param acNo the customers account number
+	 * @return
+	 */
 	public static String CustomerInfo(String name, String custNo, String acNo){
 		return "Customer: " + name + " No: " + custNo + " AccountNo:" + acNo + "\n";
 	}
-	
+	/**
+	 * Static method to format a withdraw transaction
+	 * @param value the value withdrawn
+	 * @param newBal the new balance
+	 * @return the formatted string
+	 */
 	public static String WithdrawInfo(int value, int newBal){
 		return "Deposit: " + Statistics.toPoundsAndPence(value) + " New Balance: " + Statistics.toPoundsAndPence(newBal) + "\n";
 	}
-	
+	/**
+	 * Static method to format deposit transaction
+	 * @param value the deposited value
+	 * @param newBal the new balance
+	 * @return the formatted string
+	 */
 	public static String DepositInfo(int value, int newBal){
 		return "Deposit: " + Statistics.toPoundsAndPence(value) + " New Balance: " + Statistics.toPoundsAndPence(newBal) + "\n";
 	}

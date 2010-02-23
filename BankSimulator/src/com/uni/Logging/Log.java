@@ -1,3 +1,12 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * This class allows static calls from any class to write to the
+ * log file. As it is static there is no constructor.
+ */
 package com.uni.Logging;
 
 import java.io.BufferedWriter;
@@ -7,6 +16,9 @@ import java.util.Calendar;
 
 public class Log {
 
+	/**
+	 * Clear the log file
+	 */
 	public static void clearLog()
 	{
 		try{
@@ -19,6 +31,10 @@ public class Log {
 			System.out.println("Error Clearing Log : " + e.getMessage());
 		}
 	}
+	/**
+	 * Write a message to the log file
+	 * @param message the message to be written to the log file
+	 */
 	public static void writeMessage(String message){
 		//System.out.println(message);
 		try{
@@ -32,5 +48,4 @@ public class Log {
 		}
 		
 	}
-	
 }

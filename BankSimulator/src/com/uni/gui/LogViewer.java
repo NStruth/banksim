@@ -1,6 +1,15 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * A basic gui to view the log file
+ * 
+ */
+
 package com.uni.gui;
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,6 +23,9 @@ import javax.swing.JTextArea;
 
 public class LogViewer extends JFrame{
 
+	/**
+	 * Constructor for this viewer
+	 */
 	public LogViewer(){
 		super();
 		this.setLayout(new FlowLayout());
@@ -21,7 +33,9 @@ public class LogViewer extends JFrame{
 		this.setVisible(true);
 		initComponents();
 	}
-	
+	/**
+	 * Initialise the components to hold the log
+	 */
 	public void initComponents(){
 		JTextArea jta = new JTextArea(readFromFile(),400,600);
 		JScrollPane jScroll = new JScrollPane(jta);
@@ -29,7 +43,10 @@ public class LogViewer extends JFrame{
 		
 		this.add(jScroll);
 	}
-	
+	/**
+	 * Read the log from the file
+	 * @return the log file as a string
+	 */
 	public String readFromFile(){
 		File file = new File("data/log.txt");
         StringBuffer contents = new StringBuffer();
@@ -66,9 +83,6 @@ public class LogViewer extends JFrame{
                 e.printStackTrace();
             }
         }
-        
-        // show file contents here
-       // return "Something";
        return contents.toString();
 	}
 }
