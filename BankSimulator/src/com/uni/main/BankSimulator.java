@@ -88,7 +88,7 @@ public class BankSimulator {
 		cl.print();
 					
 		CustomerQueue cq = g.generate();
-		cq.toString();
+		Log.writeMessage(cq.toString());
 		
 		/* Set up the teller */
 		Teller teller = new Teller(al);
