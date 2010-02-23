@@ -1,10 +1,18 @@
-/*package com.uni.testing;
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * JUnit testing class for Accounts.
+ */
+package com.uni.testing;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import com.main.account.Account;
+
+import com.uni.account.Account;
 
 
 public class AccountTest {
@@ -15,7 +23,7 @@ public class AccountTest {
 		
 		Account acc1 = new Account();
 		
-		String expected1 = "60001 100.00";
+		String expected1 = "60001 : £100.00";
 		String actual1 = acc1.toString();
 		String message1 = "Create failed for default account";
 		
@@ -23,9 +31,9 @@ public class AccountTest {
 		
 		//Test Conceptual Upper Bound - id 69999 balance 100000.00
 		
-		Account acc2 = new Account(100000.00, 69999);
+		Account acc2 = new Account(10000000, 69999);
 		
-		String expected2 = "69999 100000.00";
+		String expected2 = "69999 : £100000.00";
 		String actual2 = acc2.toString();
 		String message2 = "Create failed for id - 69999 balance 100000.0";
 		
@@ -33,9 +41,9 @@ public class AccountTest {
 		
 		//Test Conceptual Lower Bound - id 60000 balance 0.0
 		
-		Account acc3 = new Account(0.0, 60000);
+		Account acc3 = new Account(0, 60000);
 		
-		String expected3 = "60000 0.00";
+		String expected3 = "60000 : £0.00";
 		String actual3 = acc3.toString();
 		String message3 = "Create failed for id - 60000 balance 0.0";
 		
@@ -46,18 +54,18 @@ public class AccountTest {
 	@Test public void testToString()
 	{	
 		//Test 1 - Middle
-		Account acc1 = new Account(123.12, 60012);
+		Account acc1 = new Account(12312, 60012);
 		
-		String expected1 = "60012 123.12";
+		String expected1 = "60012 : £123.12";
 		String actual1 = acc1.toString();
 		String message1 = "Failed for id 60012, balance 123.12";
 		
 		assertEquals(message1, expected1, actual1);
 		
 		//Test 2 - Lower Bound
-		Account acc2 = new Account(0.0 , 60000);
+		Account acc2 = new Account(00 , 60000);
 		
-		String expected2 = "60000 0.00";
+		String expected2 = "60000 : £0.00";
 		String actual2 = acc2.toString();
 		String message2 = "Failed for id 60000, balance 0.0";
 		
@@ -65,9 +73,9 @@ public class AccountTest {
 		
 		//Test 3 - Upper Bound
 		
-		Account acc3 = new Account (100000.0, 69999);
+		Account acc3 = new Account (1000000, 69999);
 		
-		String expected3 = "69999 100000.00";
+		String expected3 = "69999 : £10000.00";
 		String actual3 = acc3.toString();
 		String message3 = "Failed for id 69999, balance 100000.0";
 		
@@ -80,8 +88,8 @@ public class AccountTest {
 	{
 		Account acc = new Account();
 		
-		double expected = 100.0;
-		double actual = acc.getBalance();
+		int expected = 10000;
+		int actual = acc.getBalance();
 		String message = "Failed for default account";
 		
 		assertEquals(message, expected, actual, 0);
@@ -89,10 +97,10 @@ public class AccountTest {
 	
 	@Test public void testGetID()
 	{
-		Account acc = new Account(50.0, 60001);
+		Account acc = new Account(500, 60001);
 		
 		int expected = 60001;
-		int actual = acc.getId();
+		int actual = acc.getAccountNumber();
 		String message = "Failed for account balance = 50.0, id = 60001";
 		
 		assertEquals(message, expected, actual);
@@ -101,10 +109,10 @@ public class AccountTest {
 	@Test public void testDeposit()
 	{
 		Account acc = new Account();
-		acc.deposit(50.0);
+		acc.deposit(5000);
 		
-		double expected1 = 150.0;
-		double actual1 = acc.getBalance();
+		int expected1 = 15000;
+		int actual1 = acc.getBalance();
 		String message1 = "Failed for default account - deposit 50.0";
 		
 		assertEquals(message1, expected1, actual1, 0);	
@@ -114,9 +122,9 @@ public class AccountTest {
 	@Test public void testWithdraw()
 	{
 		Account acc = new Account();
-		acc.withDraw(50.0);
+		acc.withDraw(5000);
 		
-		double expected1 = 50.0;
+		int expected1 = 5000;
 		double actual1 = acc.getBalance();
 		String message1 = "Failed for default account - withdraw 50.0";
 		
@@ -124,4 +132,3 @@ public class AccountTest {
 	}
 
 }
-*/
