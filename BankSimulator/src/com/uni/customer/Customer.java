@@ -12,10 +12,6 @@ package com.uni.customer;
 
 import java.util.ArrayList;
 
-import com.uni.Logging.Log;
-import com.uni.account.Account;
-
-
 public class Customer {
 
 	private String fName, lName;
@@ -94,19 +90,7 @@ public class Customer {
 		int acNo = accList.get(acId);
 		return acNo;
 	}
-	//TODO Ask neil
-	/**
-	 * Add an account to the customers account list
-	 * @param ac
-	 
-	public void addAccount(Account ac)
-	{
-		if(this.getNumOfAccounts() < 2)
-		{
-			this.accList.add(ac.getAccountNumber());
-		}
-	}*/
-	
+		
 	/**
 	 * Remove an account at an id
 	 * @param id the index of the account
@@ -117,8 +101,7 @@ public class Customer {
 			return true;
 		}
 		else
-			return false;
-		
+			return false;	
 	}
 	/**
 	 * To string method for this class.
@@ -127,5 +110,4 @@ public class Customer {
 	{
 		return this.fName + " " + this.lName + " " + this.address;
 	}
-	
 }

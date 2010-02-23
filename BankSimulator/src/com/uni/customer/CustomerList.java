@@ -1,3 +1,11 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * Extends ArrayList to store a list of customers
+ */
 package com.uni.customer;
 
 import java.util.ArrayList;
@@ -12,6 +20,9 @@ public class CustomerList extends ArrayList<Customer> {
 		return super.add(e);
 	}
 
+	/**
+	 * Print the list of customer to the log
+	 */
 	public void print()
 	{
 		for(Customer c: this){
