@@ -57,7 +57,7 @@ public class Transaction {
 		this.choice = c;
 	}
 	/**
-	 * onstructor to be used when opening a joint account
+	 * Constructor to be used when opening a joint account
 	 * @param c the choice
 	 * @param first the first customer
 	 * @param second the second customer
