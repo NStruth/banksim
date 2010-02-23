@@ -46,11 +46,11 @@ public class Teller {
 		TransactionList tList = q.getTransactions();
 		//get the customer from the queue item
 		Customer cust = q.getCustomer();
-		
+		System.out.println(cust.getFullName());
 		//process each transaction
 		for(Transaction t: tList){
 			//form a message to write to the log
-			
+			Statistics.TRANSACTION_TOTAL += 1;
 			String message = "";
 			
 			int acNo;
@@ -128,6 +128,7 @@ public class Teller {
 				try{
 					int bal = al.getAccountAtIndex(acNo).getBalance();
 					message += doWithdraw(acNo, bal);	
+					Statistics.TRANSACTION_TOTAL += 1; //counts as seperate
 					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");	
 					if(cust.removeAccount(acId)){
 						al.removeAccountNo(acNo);

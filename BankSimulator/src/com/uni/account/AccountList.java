@@ -53,7 +53,6 @@ public class AccountList extends ArrayList<Account>{
 		}
 		throw new NonExistantAccountException();
 	}
-	//TODO also throw exception in "removeAccount"
 	/**
 	 * Remove account with a particular account 
 	 * number
@@ -65,7 +64,6 @@ public class AccountList extends ArrayList<Account>{
 		for(Account a: this){
 			if(a.getAccountNumber() == acNo){
 				this.remove(a);
-				System.out.println("Removing" + a.getAccountNumber());
 				return true;
 			}
 		}

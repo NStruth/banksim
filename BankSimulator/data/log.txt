@@ -65,7 +65,7 @@ Deposit: £100.00 New Balance: £600.30
 
  *** Processing deposit transaction *** 
 
-Customer: Barack Obama No: 1002 AccountNo:60001
+Customer: Neil Struth No: 1002 AccountNo:60001
 Deposit: £100.00 New Balance: £1100.19
 
  *** End of deposit transaction *** 
@@ -74,7 +74,7 @@ Deposit: £100.00 New Balance: £1100.19
 
  *** Processing deposit transaction *** 
 
-Customer: Barack Obama No: 1002 AccountNo:60002
+Customer: Neil Struth No: 1002 AccountNo:60002
 Deposit: £100.00 New Balance: £600.23
 
  *** End of deposit transaction *** 
@@ -84,7 +84,7 @@ Deposit: £100.00 New Balance: £600.23
  *** Processing withdraw transaction *** 
 
 Customer: Frank Sauzee No: 1003 AccountNo:60003
-Deposit: £500.00 New Balance: £100.10
+Withdraw: £500.00 New Balance: £100.10
 
  *** End of withdraw transaction *** 
 
@@ -105,7 +105,7 @@ Customer: Gordon Brown No: 1004 AccountNo:60005
 
  *** Processing withdraw transaction *** 
 
-Deposit: £1000.54 New Balance: £0.00
+Withdraw: £1000.54 New Balance: £0.00
 Customer: Gordon Brown No: 1004 AccountNo:60005
 Successfully removed	
  *** End of withdraw transaction *** 
@@ -121,7 +121,7 @@ Customer: Gordon Brown No: 1004 AccountNo:60004
 
  *** Processing withdraw transaction *** 
 
-Deposit: £600.30 New Balance: £0.00
+Withdraw: £600.30 New Balance: £0.00
 Customer: Gordon Brown No: 1004 AccountNo:60004
 Successfully removed	
  *** End of withdraw transaction *** 
@@ -166,48 +166,3 @@ Customer: Eric Blair No: 1006 AccountNo:60017
 Maximum Number of Accounts is 2
  *** End of open transaction *** 
 
-Creating account : 60012
-Creating account : 60001
-Creating account : 60012
-Creating account : 60001
-Creating account : 69999
-Creating account : 60012
-Creating account : 60001
-Creating account : 69999
-Creating account : 60000
-Creating account : 60012
-Creating account : 60001
-Creating account : 69999
-Creating account : 60000
-Creating account : 60012
-Creating account : 60001
-Creating account : 69999
-Creating account : 60000
-Creating account : 60012
-Creating account : 60000
-Creating account : 69999
-Creating account : 60001
-Creating account : 69999
-Creating account : 60000
-Creating account : 60012
-Creating account : 60000
-Creating account : 69999
-Creating account : 60001
-Creating account : 69999
-Creating account : 60000
-Creating account : 60012
-Creating account : 60000
-Creating account : 69999
-Creating account : 60001
-Creating account : 69999
-Creating account : 60000
-Creating account : 60012
-Creating account : 60000
-Creating account : 69999
-Creating account : 60001
-Creating account : 69999
-Creating account : 60000
-Creating account : 60012
-Creating account : 60000
-Creating account : 69999
-Creating account : 60001

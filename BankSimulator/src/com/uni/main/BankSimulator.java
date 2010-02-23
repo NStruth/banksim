@@ -56,7 +56,7 @@ public class BankSimulator {
 		TransactionList tList1 = new TransactionList();
 		tList1.add(new Transaction(Transaction.Choices.DEPOSIT, 10000, cl.get(0).getAccountNo(0)));
 		tList1.add(new Transaction(Transaction.Choices.DEPOSIT, 10000, cl.get(0).getAccountNo(1)));
-		testArray[1] = new QueueItem(cl.get(3), tList1);
+		testArray[1] = new QueueItem(cl.get(0), tList1);
 		
 		TransactionList tList2 = new TransactionList();
 		tList2.add(new Transaction(Transaction.Choices.WITHDRAW, 50000, cl.get(2).getAccountNo(0)));

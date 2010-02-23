@@ -69,6 +69,7 @@ public class GuiDisplay extends JFrame implements ActionListener{
 		
 		//add the results
 		addPair("Customers Served:",Statistics.CUSTOMERS_SERVED,0);
+		addPair("Total Transactions:",Statistics.TRANSACTION_TOTAL , 0);
 		addPair("Accounts Opened:",Statistics.ACCOUNTS_OPENED,20);
 		addPair("Accounts Closed:",Statistics.ACCOUNTS_CLOSED,20);
 		addPair("Account Deposits:",Statistics.ACCOUNT_DEPOSIT,20);

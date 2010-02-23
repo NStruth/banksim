@@ -49,7 +49,7 @@ public class Language {
 	 * @return the formatted string
 	 */
 	public static String WithdrawInfo(int value, int newBal){
-		return "Deposit: " + Statistics.toPoundsAndPence(value) + " New Balance: " + Statistics.toPoundsAndPence(newBal) + "\n";
+		return "Withdraw: " + Statistics.toPoundsAndPence(value) + " New Balance: " + Statistics.toPoundsAndPence(newBal) + "\n";
 	}
 	/**
 	 * Static method to format deposit transaction
