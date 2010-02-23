@@ -1,3 +1,21 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * This is the main class for the BankSimulator.
+ * This is based on requirements set out by Monica Farrow for
+ * the Advanced Software Engineering.
+ * Version 1 represents stage 1.
+ * Version 2 represents stage 2.
+ * 
+ * This simulated a bank with accounts and a pool of customers,
+ * some with accounts and some without.  A random queue is 
+ * generated with each customer containing transactions that 
+ * are then processed by a teller.
+ * Summary results are then displayed in a basic gui.
+ */
 package com.uni.main;
 
 import com.uni.Logging.Log;
@@ -11,27 +29,13 @@ import com.uni.gui.GuiDisplay;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
-/**
- * @author Jon Mirhadi
- * @author Neil Struth
- * 
- * @version 1.0
- * 
- * A bank simulator.  A bank is set up with accounts
- * and customers.  A queue is randomly generated with 
- * customers and transactions which are processed by 
- * the teller. Summary results are displayed in a 
- * basic gui as well as a more detailed log file.
- *
- */
+
 public class BankSimulator {
 	
 	/**
+	 * The main class for this application
 	 * @param args
 	 */
-	
-
-	
 	public static void main(String[] args) {
 		//clear the log file				
 		Log.clearLog();
@@ -41,6 +45,8 @@ public class BankSimulator {
 		AccountList al = filehandle.readAccountLines();
 		CustomerList cl = filehandle.readCustomerLines();
 		
+		
+		/* TEST DATA */
 		QueueItem[] testArray = new QueueItem[6];
 		
 		TransactionList tList0 = new TransactionList();
@@ -73,6 +79,7 @@ public class BankSimulator {
 		tList5.add(new Transaction(Transaction.Choices.OPEN));
 		tList5.add(new Transaction(Transaction.Choices.OPEN));
 		testArray[5] = new QueueItem(cl.get(4), tList5);
+		/* END TEST DATA */
 		
 		/* Generate a random queue */
 		//Generator g = new Generator(cl, al);

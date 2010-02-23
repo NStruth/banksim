@@ -20,7 +20,6 @@ public class Statistics {
 	public static int TOTALS_WITHDRAW = 0;
 	public static int TOTALS_DEPOSTIT = 0;
 
-	
 	/**
 	 * @param value the value to display
 	 * @return the value as a string in the format £##.##

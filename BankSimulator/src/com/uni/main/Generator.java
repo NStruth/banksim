@@ -1,5 +1,14 @@
-/*This class will randomly generate a queue
-from a list of customers - Neil Struth */
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 1.0
+ * 
+ * This class will randomly generate a queue from a list of customers.
+ * 
+ * Some rules are employed to ensure sensible(ish) transactions
+ */
+
 package com.uni.main;
 
 import java.text.DecimalFormat;
@@ -17,22 +26,34 @@ import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
 public class Generator {
-	CustomerList clist;
-	AccountList aList;
+	private CustomerList clist; //the list of customers
+	private AccountList aList; //the list of accounts
 	
+	/**
+	 * Constructor for the random generator
+	 * @param clist the list of customers
+	 * @param alist the list of accounts
+	 */
 	public Generator(CustomerList clist, AccountList alist)
 	{
 		this.clist = clist;
 		this.aList = alist;
 	}
-		
+	/**
+	 * Generate a single item
+	 * @return the queue item
+	 */
 	private QueueItem generateItem()
 	{
+		//create a random generator
 		Random rGen = new Random();
+		//select a random customer
 		int cNo = rGen.nextInt(clist.size());
 		Customer c = clist.get(cNo);
+		//only process if the customer is not in the queue
 		if(c.getStatus() == 0)
 		{
+			//change queue status
 			c.setStatus(1);
 			
 			//1,2,3 transactions with weighted selection
@@ -72,26 +93,44 @@ public class Generator {
 			return q;
 		}
 	}
-		
+	
+	/**
+	 * Get a transaction for a queue item based on customer.
+	 * Transaction choices based on number of accounts the customer
+	 * has.
+	 * Account offset determines is used if a customer is
+	 * already closing 1 or both accounts so the next transaction
+	 * will not attempt to interact with said accounts.
+	 * @param c
+	 * @param accountOffset
+	 * @return
+	 */
 	private Transaction getTransaction(Customer c, int accountOffset)
 	{
 		Random rGen = new Random();
 		int cWeight, oWeight, dWeight = 0;
 		int totalWeight = 100;
 		int tType = rGen.nextInt(100) + 1;
+		//how many accounts will they have after previous
+		//transactions are processed
 		int accounts = c.getNumOfAccounts() + accountOffset;
 		switch(accounts)
 		{
+			//if they have no accounts
 			case 0:
 			{
+				//the can only open an account
 				Transaction t = new Transaction(Transaction.Choices.OPEN);
 				return t;
 			}
+			//if they have one account
 			case 1:
 			{
+				//do some weighting
 				cWeight = 5;
 				oWeight = 5;
 				dWeight = 45;
+				//possibly close, deposit, or withdraw from account or open a new one
 				if(tType > 0 && tType <= cWeight)
 				{
 					return generateClose(0);
@@ -105,6 +144,7 @@ public class Generator {
 				}
 				break;
 			}
+			//if they have 2 accounts only close, withdraw, deposit
 			case 2:
 			{
 				cWeight = 10;
@@ -136,7 +176,8 @@ public class Generator {
 	
 
 	/**
-	 * 
+	 * Get the amount that the customer wants to withdraw.
+	 * Note that there is a £200 withdraw limit.
 	 * @param c the customer 
 	 * @param acc the account number
 	 * @return the amount to be withdrawn
@@ -148,10 +189,12 @@ public class Generator {
 			a.toString();
 			Random rGen = new Random();
 		
+			//if the customer has less than 200 withdraw up to their balance
 			if(a.getBalance() < 20000){
-				int amount = rGen.nextInt(20000);
+				int amount = rGen.nextInt(a.getBalance());
 				return amount;
 			}
+			//otherwise withdraw anything up to limit
 			else{
 				int amount = rGen.nextInt(20001);
 				return amount;
@@ -161,7 +204,10 @@ public class Generator {
 		}
 		
 	}
-	
+	/**
+	 * generate an entire customer queue
+	 * @return the queue of customers with transactions
+	 */
 	public CustomerQueue generate()
 	{
 		CustomerQueue q = new CustomerQueue();
@@ -181,14 +227,26 @@ public class Generator {
 		return q;
 	}
 	
-	private Transaction generateDeposit(Customer c, Random rGen, int accNo){
-		return  new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), accNo);
+	/**
+	 * Generate a deposit transaction
+	 * @param c the customer
+	 * @param rGen the random generator
+	 * @param accNo the account id (in the customers account list)
+	 * @return the deposit transaction
+	 */
+	private Transaction generateDeposit(Customer c, Random rGen, int accId){
+		return  new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), accId);
 	}
-	
+	/**
+	 * Generate a close transaction
+	 * @param accId the account id (in the customers account list)
+	 * @return the close transaction
+	 */
 	private Transaction generateClose(int accId){
 		return new Transaction(Transaction.Choices.CLOSE, accId);
 	}
 
+	
 	private Transaction generateWithdraw(Customer c, int accId ){
 		return new Transaction(Transaction.Choices.WITHDRAW, getWithdrawAmount(c, accId), accId);
 	}
