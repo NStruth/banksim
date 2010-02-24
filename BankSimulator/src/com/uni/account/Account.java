@@ -63,10 +63,13 @@ public class Account {
 	 * Deposit money into the account
 	 * @param value the value to be deposited
 	 */
-	public void deposit(int value){
+	public boolean deposit(int value){
 		if(value <= 100000 && value >= 0)
 		{
 			this.balance += value;
+			return true;
+		}else{
+			return false;
 		}
 	}
 	/**
