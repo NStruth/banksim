@@ -52,7 +52,7 @@ public class Account {
 	 * @return true if valid transaction else false
 	 */
 	public boolean withDraw(int value){
-		if(value > this.balance){
+		if(value > this.balance || value > 20000 || value < 0){
 			return false;
 		}else{
 			this.balance = this.balance - value;
@@ -63,8 +63,11 @@ public class Account {
 	 * Deposit money into the account
 	 * @param value the value to be deposited
 	 */
-	public void deposit(double value){
-		this.balance += value;
+	public void deposit(int value){
+		if(value <= 20000 && value >= 0)
+		{
+			this.balance += value;
+		}
 	}
 	/**
 	 * Write the balance to the log
