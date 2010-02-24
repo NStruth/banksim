@@ -94,8 +94,6 @@ public class Teller {
 			case OPEN:
 				Statistics.ACCOUNTS_OPENED++; //udate stats
 				message += Language.OPEN_START;
-				Account acc = new Account(); //create the account
-				al.add(acc); //add the account
 				//try associate account with customer
 				if(cust.getNumOfAccounts() >= 2)
 				{
@@ -103,6 +101,8 @@ public class Teller {
 					message += Language.OPEN_END;
 					break;
 				}
+				Account acc = new Account(); //create the account
+				al.add(acc); //add
 				cust.addAccount(acc.getAccountNumber());
 				message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
 				message += Language.OPEN_END;

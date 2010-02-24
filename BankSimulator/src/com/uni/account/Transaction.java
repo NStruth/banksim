@@ -13,6 +13,7 @@
 package com.uni.account;
 
 import com.uni.customer.Customer;
+import com.uni.main.Statistics;
 
 public class Transaction {
 	/*
@@ -91,13 +92,16 @@ public class Transaction {
 	}
 	
 	public String toString(){
-		String retV = choice.toString();
+		String retV = "   Type: " + choice.toString();
 		if(primaryAux != null){
-			retV += primaryAux.toString();
+			if(choice == Transaction.Choices.WITHDRAW || choice == Transaction.Choices.DEPOSIT)
+				retV += "::" + Statistics.toPoundsAndPence((Integer)primaryAux);
+			else
+				retV += "::" + primaryAux.toString();
 		}
 		
 		if(secondaryAux != null){
-			retV += secondaryAux.toString();
+			retV += "::" + secondaryAux.toString();
 		}
 		return retV;
 	}

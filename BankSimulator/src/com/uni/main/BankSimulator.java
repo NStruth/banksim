@@ -88,7 +88,7 @@ public class BankSimulator {
 		cl.print();
 					
 		CustomerQueue cq = g.generate();
-		Log.writeMessage(cq.toString());
+		Log.writeMessage("\n\n" + cq.toString());
 		
 		/* Set up the teller */
 		Teller teller = new Teller(al);
@@ -97,7 +97,12 @@ public class BankSimulator {
 		for(int i=0; i<size;i++){
 			teller.processQueueItem(cq.get(i));
 		}
+		
+		Log.writeMessage("State AFTER transactions");
+		Log.writeMessage(al.toString());
+		
 		//display summary results
 		GuiDisplay gd = new GuiDisplay();
+		
 	}
 }

@@ -60,6 +60,6 @@ public class QueueItem {
 		for(Transaction t: this.tList){
 			v+= t.toString() + "\n";
 		}
-		return this.c.getFullName() + "\n" + v;
+		return this.c.getFullName() + " QueueNo:" + this.custId + "\n" + v;
 	}
 }
