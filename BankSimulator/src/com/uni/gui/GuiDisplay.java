@@ -85,9 +85,11 @@ public class GuiDisplay extends JFrame implements ActionListener{
 		layout.putConstraint(SpringLayout.WEST, logButton,westLabel,SpringLayout.WEST, jp);
 	    layout.putConstraint(SpringLayout.NORTH, logButton,north,SpringLayout.NORTH, jp);
 	    
-	    super.pack();
+	    
 	    super.setDefaultCloseOperation(EXIT_ON_CLOSE);
         super.add(jp);
+        super.setVisible(true);
+        
 	}
 	
 	/**
