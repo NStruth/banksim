@@ -84,13 +84,11 @@ public class Teller {
 					ac = this.al.getAccountAtIndex(acNo); //get the account
 					value = (Integer)t.getPrimaryAux(); //get the value
 					
-					if(ac.deposit(value)){
+					ac.deposit(value);
 						//deposit the value
-						Statistics.TOTALS_DEPOSTIT += value; //update stats
-						message += Language.DepositInfo(value, ac.getBalance()); 
-					}else{
-						message += "\n\nSorry you need to see a manager for that transaction\n";
-					}
+					Statistics.TOTALS_DEPOSTIT += value; //update stats
+					message += Language.DepositInfo(value, ac.getBalance()); 
+					
 					
 					
 				}catch(NonExistantAccountException e){
