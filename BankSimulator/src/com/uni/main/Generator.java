@@ -235,7 +235,7 @@ public class Generator {
 	 * @return the deposit transaction
 	 */
 	private Transaction generateDeposit(Customer c, Random rGen, int accId){
-		return  new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(10000), accId);
+		return  new Transaction(Transaction.Choices.DEPOSIT, rGen.nextInt(100000), accId);
 	}
 	/**
 	 * Generate a close transaction
