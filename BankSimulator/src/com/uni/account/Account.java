@@ -64,7 +64,7 @@ public class Account {
 	 * @param value the value to be deposited
 	 */
 	public void deposit(int value){
-		if(value <= 20000 && value >= 0)
+		if(value <= 100000 && value >= 0)
 		{
 			this.balance += value;
 		}

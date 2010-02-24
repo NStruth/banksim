@@ -86,31 +86,25 @@ public class AccountTest {
 	
 	@Test public void testGetBalance()
 	{
-		Account acc1 = new Account();
-		
+		Account acc1 = new Account();	
 		int expected1 = 10000;
 		int actual1 = acc1.getBalance();
 		String message1 = "Failed for default account";
-		
 		assertEquals(message1, expected1, actual1);
 		
 		Account acc2 = new Account(0, 62345);
-		
 		int expected2 = 0;
 		int actual2 = acc2.getBalance();
 		String message2 = "Failed for default account";
-		
 		assertEquals(message2, expected2, actual2);
 	}
 	
 	@Test public void testGetID()
 	{
-		Account acc = new Account(500, 60001);
-		
+		Account acc = new Account(500, 60001);	
 		int expected = 60001;
 		int actual = acc.getAccountNumber();
 		String message = "Failed for account balance = 50.0, id = 60001";
-		
 		assertEquals(message, expected, actual);
 	}
 	
@@ -118,29 +112,23 @@ public class AccountTest {
 	{
 		Account acc1 = new Account();
 		acc1.deposit(5000);
-		
 		int expected1 = 15000;
 		int actual1 = acc1.getBalance();
 		String message1 = "Failed for default account - deposit £50";
-		
 		assertEquals(message1, expected1, actual1);	
 		
 		Account acc2 = new Account();
 		acc2.deposit(-1);
-		
 		int expected2 = 10000;
 		int actual2 = acc2.getBalance();
 		String message2 = "Failed for default account - deposit -1p";
-		
 		assertEquals(message2, expected2, actual2);
 		
 		Account acc3 = new Account();
-		acc3.deposit(30000);
-		
+		acc3.deposit(100100);
 		int expected3 = 10000;
 		int actual3 = acc3.getBalance();
-		String message3 = "Failed for default account - deposit £300";
-		
+		String message3 = "Failed for default account - deposit £1001";
 		assertEquals(message3, expected3, actual3);
 	}
 	
@@ -149,30 +137,31 @@ public class AccountTest {
 	{
 		Account acc1 = new Account();
 		acc1.withDraw(5000);
-		
 		int expected1 = 5000;
 		int actual1 = acc1.getBalance();
 		String message1 = "Failed for default account - withdraw £50";
-		
 		assertEquals(message1, expected1, actual1);
 		
 		Account acc2 = new Account();
 		acc2.withDraw(-1);
-		
 		int expected2 = 10000;
 		int actual2 = acc2.getBalance();
-		String message2 = "Failed for default account - withdraw -1p";
-		
+		String message2 = "Failed for default account - withdraw -1p";	
 		assertEquals(message2, expected2, actual2);
 		
 		Account acc3 = new Account();
-		acc3.withDraw(30000);
-		
+		acc3.withDraw(30000);		
 		int expected3 = 10000;
 		int actual3 = acc3.getBalance();
-		String message3 = "Failed for default account - withdraw £300";
-		
+		String message3 = "Failed for default account - withdraw £300";		
 		assertEquals(message3, expected3, actual3);
+		
+		Account acc4 = new Account();
+		acc4.withDraw(20000);		
+		int expected4 = 10000;
+		int actual4 = acc4.getBalance();
+		String message4 = "Failed for default account - withdraw £200";	
+		assertEquals(message4, expected4, actual4);
 	}
 
 }
