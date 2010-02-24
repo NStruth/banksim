@@ -53,6 +53,7 @@ public class GuiDisplay extends JFrame implements ActionListener{
 		layout = new SpringLayout(); //the layout manager
 		jp.setLayout(layout); //set the layout
 		
+		
 		//get the font so we can fix it
 		Font f = this.getFont();
 		
@@ -84,6 +85,8 @@ public class GuiDisplay extends JFrame implements ActionListener{
 		layout.putConstraint(SpringLayout.WEST, logButton,westLabel,SpringLayout.WEST, jp);
 	    layout.putConstraint(SpringLayout.NORTH, logButton,north,SpringLayout.NORTH, jp);
 	    
+	    super.pack();
+	    super.setDefaultCloseOperation(EXIT_ON_CLOSE);
         super.add(jp);
 	}
 	
