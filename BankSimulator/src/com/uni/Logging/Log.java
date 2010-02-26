@@ -22,7 +22,7 @@ public class Log {
 	public static void clearLog()
 	{
 		try{
-			BufferedWriter writer = new BufferedWriter(new FileWriter("data/log.txt"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("log.txt"));
 			writer.write("");
 			writer.close();
 			}
@@ -38,7 +38,7 @@ public class Log {
 	public static void writeMessage(String message){
 		//System.out.println(message);
 		try{
-			BufferedWriter writer = new BufferedWriter(new FileWriter("data/log.txt", true));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("log.txt", true));
 			writer.write(message + '\n');
 			writer.close();
 			}

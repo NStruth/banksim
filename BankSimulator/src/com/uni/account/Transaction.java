@@ -58,6 +58,8 @@ public class Transaction {
 		this.choice = c;
 	}
 	/**
+	 *N.B this is a concept and not implemented
+	 *
 	 * Constructor to be used when opening a joint account
 	 * @param c the choice
 	 * @param first the first customer

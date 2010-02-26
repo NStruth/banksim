@@ -45,8 +45,8 @@ public class BankSimulator {
 		AccountList al = filehandle.readAccountLines();
 		CustomerList cl = filehandle.readCustomerLines();
 		
-		
-		/* TEST DATA */
+		/* TEST DATA - Left in for convenience
+		//TODO move this test data somewhere nicer
 		QueueItem[] testArray = new QueueItem[6];
 		
 		TransactionList tList0 = new TransactionList();
@@ -82,6 +82,7 @@ public class BankSimulator {
 		/* END TEST DATA */
 		
 		/* Generate a random queue */
+		Log.writeMessage("TEST");
 		Generator g = new Generator(cl, al);
 		Log.writeMessage(al.toString());
 		Log.writeMessage("DISPLAYING CUSTOMER LIST");
@@ -92,6 +93,12 @@ public class BankSimulator {
 		
 		/* Set up the teller */
 		Teller teller = new Teller(al);
+		
+		/* Uncomment for testing */
+		/*for(QueueItem qi: testArray){
+			cq.add(qi);
+		}*/
+		
 		/* Process the queue */
 		int size = cq.size();
 		for(int i=0; i<size;i++){

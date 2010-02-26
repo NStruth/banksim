@@ -12,7 +12,7 @@ Carlton::Banks::13 Bel-Air::60010::60011
 Al::Bundy::23 Street With No Name::60011::60010
 Chris::Cross::3 Lois Lane::60012
 Constance::Noring::43 Street Road::60013
-Dick::Face::8 Boss Avenue::60014::60015
+Henry::Cooper::8 Boss Avenue::60014::60015
 Emma::Royds::12 Table Loan::60015
 Mary::Christmas::13 North Pole
 Polly::Ester::6 Church Street
