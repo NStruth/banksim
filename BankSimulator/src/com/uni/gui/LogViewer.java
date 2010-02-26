@@ -48,7 +48,7 @@ public class LogViewer extends JFrame{
 	 * @return the log file as a string
 	 */
 	public String readFromFile(){
-		File file = new File("data/log.txt");
+		File file = new File("log.txt");
         StringBuffer contents = new StringBuffer();
         BufferedReader reader = null;
 

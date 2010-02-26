@@ -41,7 +41,7 @@ public class BankSimulator {
 		Log.clearLog();
 		
 		//read in list of accounts and customers
-		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
+		FileIO filehandle = new FileIO("/data/accounts.txt","/data/customers.txt");
 		AccountList al = filehandle.readAccountLines();
 		CustomerList cl = filehandle.readCustomerLines();
 		
@@ -82,7 +82,7 @@ public class BankSimulator {
 		/* END TEST DATA */
 		
 		/* Generate a random queue */
-		Log.writeMessage("TEST");
+		
 		Generator g = new Generator(cl, al);
 		Log.writeMessage(al.toString());
 		Log.writeMessage("DISPLAYING CUSTOMER LIST");

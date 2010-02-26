@@ -91,11 +91,11 @@ public class FileIO {
 	public CustomerList readCustomerLines()
 	{
 		try{
-			File file = new File(cfilename);//REMOVE
-			Scanner scanner = new Scanner(file);//REMOVE
-			/*InputStream in = getClass().getResourceAsStream
+			//File file = new File(cfilename);//REMOVE
+			//Scanner scanner = new Scanner(file);//REMOVE
+			InputStream in = getClass().getResourceAsStream
 			  (cfilename);
-			  Scanner scanner = new Scanner(in);*/
+			  Scanner scanner = new Scanner(in);
 			CustomerList cList = new CustomerList();
 			scanner.useDelimiter("\n");
 			while(scanner.hasNext())
@@ -104,7 +104,7 @@ public class FileIO {
 			}
 			return cList;
 		}
-		catch(FileNotFoundException e){return null;}
+		catch(Exception e){return null;}
 	}
 	/**
 	 * Parse an individual line to get a customer		
