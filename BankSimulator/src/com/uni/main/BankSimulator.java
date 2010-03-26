@@ -28,6 +28,7 @@ import com.uni.file.FileIO;
 import com.uni.gui.GuiDisplay;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
+import com.uni.gui.*;
 
 
 public class BankSimulator {
@@ -41,7 +42,7 @@ public class BankSimulator {
 		Log.clearLog();
 		
 		//read in list of accounts and customers
-		FileIO filehandle = new FileIO("/data/accounts.txt","/data/customers.txt");
+		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
 		AccountList al = filehandle.readAccountLines();
 		CustomerList cl = filehandle.readCustomerLines();
 		
@@ -109,7 +110,10 @@ public class BankSimulator {
 		Log.writeMessage(al.toString());
 		
 		//display summary results
-		GuiDisplay gd = new GuiDisplay();
-		
+		//GuiDisplay gd = new GuiDisplay();
+		AlternativeGUI ag = new AlternativeGUI();
+		ag.setWithdrawn(Statistics.TOTALS_WITHDRAW);
+		ag.setCusts(Statistics.CUSTOMERS_SERVED);
+		ag.setDeposited(Statistics.TOTALS_DEPOSTIT);
 	}
 }
