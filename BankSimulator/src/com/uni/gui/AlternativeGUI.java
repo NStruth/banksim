@@ -4,7 +4,7 @@ package com.uni.gui;
 import java.awt.*;
 import javax.swing.*;
 
-class AlternativeGUI extends JFrame 
+public class AlternativeGUI extends JFrame 
 {
 	JTextField custs, out, in;
 	public AlternativeGUI ()
