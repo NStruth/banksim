@@ -46,12 +46,12 @@ public class FileIO {
 	{
 		try
 		{
-			//File file = new File(afilename); // Non Jar
-			//Scanner scanner = new Scanner(file); //Non Jar
+			File file = new File(afilename); // Non Jar
+			Scanner scanner = new Scanner(file); //Non Jar
 			//User below for JAR setup
-			InputStream in = getClass().getResourceAsStream
+			/*InputStream in = getClass().getResourceAsStream
 			  (afilename);
-			  Scanner scanner = new Scanner(in);
+			  Scanner scanner = new Scanner(in);*/
 			AccountList list = new AccountList();
 			//new line delimiter
 			scanner.useDelimiter("\r\n");//look into
@@ -62,10 +62,10 @@ public class FileIO {
 			}
 			scanner.close();
 			return list;
-		}catch(Exception e){
+		}/*catch(Exception e){
 			return null;
-		}
-		//catch(FileNotFoundException e){return null;}
+		}*/
+		catch(FileNotFoundException e){return null;}
 	}
 	/**
 	 * Parse a single line to produce an account
@@ -91,11 +91,11 @@ public class FileIO {
 	public CustomerList readCustomerLines()
 	{
 		try{
-			//File file = new File(cfilename);//REMOVE
-			//Scanner scanner = new Scanner(file);//REMOVE
-			InputStream in = getClass().getResourceAsStream
+			File file = new File(cfilename);//Non Jar
+			Scanner scanner = new Scanner(file);//Non Jar
+			/*InputStream in = getClass().getResourceAsStream
 			  (cfilename);
-			  Scanner scanner = new Scanner(in);
+			  Scanner scanner = new Scanner(in);*/
 			CustomerList cList = new CustomerList();
 			scanner.useDelimiter("\n");
 			while(scanner.hasNext())
