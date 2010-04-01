@@ -18,6 +18,8 @@
  */
 package com.uni.main;
 
+import javax.swing.JOptionPane;
+
 import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
 import com.uni.account.AccountList;
@@ -110,10 +112,25 @@ public class BankSimulator {
 		Log.writeMessage(al.toString());
 		
 		//display summary results
-		//GuiDisplay gd = new GuiDisplay();
-		AlternativeGUI ag = new AlternativeGUI();
-		ag.setWithdrawn(Statistics.TOTALS_WITHDRAW);
-		ag.setCusts(Statistics.CUSTOMERS_SERVED);
-		ag.setDeposited(Statistics.TOTALS_DEPOSTIT);
+		
+		GuiDisplay gd = new GuiDisplay();
+		int response = showDialog();
+		if(response == 1)
+		{
+			gd.setVisible(false);
+			AlternativeGUI ag = new AlternativeGUI();
+			ag.setWithdrawn(Statistics.TOTALS_WITHDRAW);
+			ag.setCusts(Statistics.CUSTOMERS_SERVED);
+			ag.setDeposited(Statistics.TOTALS_DEPOSTIT);
+		}
+	}
+	public static int showDialog()
+	{
+		String message = "Which GUI would you like to use?";
+		String title = "GUI Selector";
+		Object[] options = {"Orginal", "Alternative"};
+		
+		int response = JOptionPane.showOptionDialog(null, message, title, JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+		return response;
 	}
 }
